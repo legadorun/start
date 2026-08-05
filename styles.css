@@ -541,7 +541,12 @@ h3 {
 }
 
 .logo-wall .sponsor-logo-light {
+  padding: 0.25rem;
   background: #ffffff;
+}
+
+.sponsor-logo-light img {
+  max-height: 7.8rem;
 }
 
 .sponsor-logo img {
