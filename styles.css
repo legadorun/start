@@ -540,6 +540,10 @@ h3 {
   background: #050505;
 }
 
+.logo-wall .sponsor-logo-light {
+  background: #ffffff;
+}
+
 .sponsor-logo img {
   width: 100%;
   height: 100%;
