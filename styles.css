@@ -517,6 +517,28 @@ h3 {
   font-size: 1.08rem;
 }
 
+.sponsor-reach {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(17, 18, 15, 0.1);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.sponsor-reach h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.sponsor-reach p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.sponsor-reach strong {
+  color: var(--ink);
+}
+
 .logo-wall {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
