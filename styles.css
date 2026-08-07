@@ -307,6 +307,8 @@ h3 {
 }
 
 .video-card {
+  width: min(100%, 320px);
+  justify-self: center;
   overflow: hidden;
   background: var(--ink);
   box-shadow: var(--shadow);
