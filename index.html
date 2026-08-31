@@ -3,457 +3,235 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>LEGADO RUN</title>
-    <meta
-      name="description"
-      content="1ª Corrida LEGADO RUN: caminhada 3K, corridas 6K e 9K, música, comunidade e propósito em frente ao Boullevard Shopping, Avenida dos Andradas, Belo Horizonte/MG."
-    />
+    <title>LEGADO RUN | Movimento, comunidade e propósito</title>
+    <meta name="description" content="LEGADO RUN é um movimento de corrida, caminhada, comunidade e propósito em Belo Horizonte. Faça parte dos treinos, histórias e da 1ª corrida em 01.11.2026." />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=legado-movimento-1" />
   </head>
   <body>
-    <a class="skip-link" href="#inscricoes">Ir para inscrições</a>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
     <header class="site-header">
-      <a class="brand" href="#topo" aria-label="LEGADO RUN">
-        <span class="brand-mark">LR</span>
-        <span>
-          <strong>LEGADO RUN</strong>
-        </span>
-      </a>
-
+      <a class="brand" href="/" aria-label="LEGADO RUN"><span class="brand-mark">LR</span><strong>LEGADO RUN</strong></a>
       <nav class="main-nav" aria-label="Navegação principal">
-        <a href="#evento">Evento</a>
-        <a href="#distancias">Distâncias</a>
-        <a href="#kit">Kit</a>
-        <a href="#cronograma">Cronograma</a>
-        <a href="#local">Local</a>
-        <a href="#patrocinadores">Patrocínio</a>
-        <a href="#faq">FAQ</a>
+        <a href="movimento.html">Movimento</a>
+        <a href="treinos.html">Treinos</a>
+        <a href="comunidade.html">Comunidade</a>
+        <a href="historias.html">Histórias</a>
+        <a href="#corrida">1ª corrida</a>
+        <a href="#patrocinadores">Parceiros</a>
       </nav>
-
-      <a class="header-cta" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Garantir vaga</a>
+      <button class="header-cta" type="button" data-open-join data-track="click_fazer_parte">Fazer parte</button>
     </header>
 
-    <main id="topo">
-      <section class="hero" aria-labelledby="hero-title">
-        <img class="hero-image hero-image-official" src="assets/legado-run-hero-oficial.png" alt="Arte LEGADO RUN com corredor usando a camisa oficial na Avenida dos Andradas" />
+    <main id="conteudo">
+      <section class="hero" id="topo" aria-labelledby="hero-title">
+        <video class="hero-media" autoplay muted loop playsinline preload="metadata" poster="assets/legado-run-hero-oficial.png">
+          <source src="assets/video-convite-legado-run.mp4" type="video/mp4" />
+        </video>
+        <img class="hero-fallback" src="assets/legado-run-hero-oficial.png" alt="LEGADO RUN na Avenida dos Andradas" />
         <div class="hero-scrim"></div>
         <div class="hero-content">
-          <p class="eyebrow">01 nov 2026 · Belo Horizonte/MG</p>
-          <h1 id="hero-title">1ª Corrida LEGADO RUN</h1>
-          <p class="hero-subtitle">Você vai poder dizer: eu estava na primeira.</p>
-          <p class="hero-statement">Não é sobre velocidade. É sobre propósito.</p>
-
-          <div class="hero-actions" aria-label="Ações principais">
-            <a class="button button-primary" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Quero fazer parte</a>
-            <a class="button button-secondary" href="#experiencia">Conhecer o LEGADO RUN</a>
+          <p class="eyebrow">Movimento • comunidade • propósito</p>
+          <h1 id="hero-title">Você não precisa correr sozinho.</h1>
+          <p class="hero-subtitle">Um movimento de pessoas que escolheram correr, evoluir e construir algo que vai além dos quilômetros.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" type="button" data-open-join data-track="click_fazer_parte">Quero fazer parte</button>
+            <a class="button button-secondary" href="#movimento" data-track="view_movimento">Conhecer o movimento</a>
           </div>
-
-          <div class="hero-facts" aria-label="Modalidades e atrações">
-            <span>3K caminhada</span>
-            <span>6K corrida</span>
-            <span>9K corrida</span>
-          </div>
+          <a class="race-chip" href="#corrida">1ª corrida • 01.11.2026</a>
         </div>
       </section>
 
-      <section class="countdown-band" aria-labelledby="countdown-title">
-        <div>
-          <p class="section-kicker">Prepare-se</p>
-          <h2 id="countdown-title">01 de novembro</h2>
-        </div>
-        <div class="countdown" data-event-date="2026-11-01T06:00:00-03:00" aria-live="polite">
-          <div><strong data-days>--</strong><span>dias</span></div>
-          <div><strong data-hours>--</strong><span>horas</span></div>
-          <div><strong data-minutes>--</strong><span>min</span></div>
-          <div><strong data-seconds>--</strong><span>seg</span></div>
-        </div>
-        <noscript><p class="countdown-fallback">01 de novembro de 2026</p></noscript>
-      </section>
-
-      <section class="section intro-section" id="experiencia" aria-labelledby="experiencia-title">
+      <section class="section belonging-section" id="movimento" aria-labelledby="pertencimento-title">
         <div class="section-copy">
-          <p class="section-kicker">Uma experiência que vai além da corrida</p>
-          <h2 id="experiencia-title">Muitos correm para chegar. Nós corremos para deixar um legado.</h2>
-          <p>
-            O LEGADO RUN nasceu para unir esporte, saúde, propósito e transformação. Mais do que cruzar uma linha de chegada,
-            queremos inspirar pessoas a viverem com significado, disciplina e impacto.
-          </p>
-          <p>
-            Cada quilômetro representa superação. Cada participante faz parte de algo maior.
-          </p>
+          <p class="section-kicker">Um lugar para fazer parte</p>
+          <h2 id="pertencimento-title">Você chega pela corrida. Permanece pelas pessoas.</h2>
+          <p>Talvez você nunca tenha corrido. Talvez esteja tentando começar. Talvez já corra há anos.</p>
+          <p>Não importa. No LEGADO RUN existe espaço para quem quer dar o primeiro passo e para quem quer descobrir até onde consegue chegar. Aqui, ninguém precisa fazer o caminho sozinho.</p>
+          <button class="button button-dark" type="button" data-open-join>Encontrar meu lugar</button>
         </div>
-
-        <div class="video-card" aria-label="Vídeo convite do LEGADO RUN">
-          <video controls preload="metadata" poster="assets/legado-run-hero-oficial.png">
-            <source src="assets/video-convite-legado-run.mp4" type="video/mp4" />
-            Seu navegador não suporta a reprodução deste vídeo.
-          </video>
-        </div>
+        <div class="belief-card"><span>Sim.</span><p>Existe lugar para você aqui.</p></div>
       </section>
 
-      <section class="section social-section" aria-labelledby="social-title">
+      <section class="section live-section" aria-labelledby="acontecendo-title">
         <div class="section-heading">
-          <p class="section-kicker">Isso já começou</p>
-          <h2 id="social-title">Antes da primeira largada, uma comunidade já começou a correr junta.</h2>
+          <p class="section-kicker">Isso já está acontecendo</p>
+          <h2 id="acontecendo-title">Antes da primeira largada, uma comunidade já começou.</h2>
         </div>
-        <div class="social-proof-grid">
-          <figure>
-            <img src="assets/legado-run-hero-oficial.png" alt="Comunidade LEGADO RUN reunida para correr com propósito" loading="lazy" />
-            <figcaption>Encontros, treinos e conteúdos oficiais do movimento.</figcaption>
-          </figure>
-          <div class="proof-panel">
-            <span>Indicadores em atualização</span>
-            <p>
-              Este espaço está preparado para receber números reais de treinos, encontros, inscritos e parceiros assim
-              que forem oficialmente confirmados.
-            </p>
-          </div>
+        <div class="editorial-mosaic">
+          <article class="mosaic-main">
+            <video controls preload="metadata" playsinline poster="assets/legado-run-hero-oficial.png">
+              <source src="assets/video-convite-legado-run.mp4" type="video/mp4" />
+            </video>
+            <div><strong>Conteúdo real do movimento</strong><p>Vídeos dos encontros, treinos e bastidores entram aqui conforme forem selecionados oficialmente.</p></div>
+          </article>
+          <article class="mosaic-tile">Treinos</article>
+          <article class="mosaic-tile">Encontros</article>
+          <article class="mosaic-quote"><p>“Você não precisa estar pronto. Só precisa começar.”</p></article>
+          <article class="mosaic-note"><strong>Arquivos necessários</strong><p>Fotos horizontais, vídeos verticais, frames de depoimentos e registros reais dos próximos treinos.</p></article>
         </div>
+        <a class="button button-dark" href="treinos.html">Ver como são os treinos</a>
       </section>
 
-      <section class="section reasons-section" id="participar" aria-labelledby="participar-title">
-        <div class="section-heading">
-          <p class="section-kicker">Por que participar?</p>
-          <h2 id="participar-title">Mais que uma prova, um movimento para viver em família.</h2>
+      <section class="section training-section" id="treinos" aria-labelledby="treinos-title">
+        <div class="section-copy">
+          <p class="section-kicker">Próximo treino</p>
+          <h2 id="treinos-title">Seu primeiro passo pode ser no próximo treino.</h2>
+          <p>Um encontro para caminhar, correr, conhecer pessoas e construir constância. Quando a próxima data for confirmada, este bloco será atualizado com dia, horário, local e mapa.</p>
+          <a class="button button-primary" href="https://chat.whatsapp.com/IEJSDWF9a0ZLIFcD13W5qf" target="_blank" rel="noreferrer" data-track="click_proximo_treino">Eu vou no próximo</a>
         </div>
-        <div class="reason-grid">
-          <article class="reason-card">
-            <span>01</span>
-            <h3>Propósito</h3>
-            <p>Cada passo carrega a mensagem do LEGADO RUN: correr com sentido e deixar marcas positivas.</p>
-          </article>
-          <article class="reason-card">
-            <span>02</span>
-            <h3>Saúde</h3>
-            <p>Um convite para sair do sedentarismo, caminhar, correr e começar uma nova rotina.</p>
-          </article>
-          <article class="reason-card">
-            <span>03</span>
-            <h3>Comunidade</h3>
-            <p>Uma manhã para reunir amigos, igrejas, assessorias, empresas e famílias em Belo Horizonte.</p>
-          </article>
-          <article class="reason-card">
-            <span>04</span>
-            <h3>Experiência</h3>
-            <p>Corrida, caminhada, música, premiação, cobertura audiovisual e uma arena preparada para receber todos.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section challenge-section" id="distancias" aria-labelledby="distancias-title">
-        <div class="section-heading">
-          <p class="section-kicker">Qual será o seu desafio?</p>
-          <h2 id="distancias-title">Escolha a distância que combina com o seu momento.</h2>
-        </div>
-        <div class="challenge-grid">
-          <article class="challenge-card">
-            <span>3K</span>
-            <h3>Meu primeiro passo</h3>
-            <p>Caminhada, iniciação e participação em família.</p>
-            <a class="button button-dark" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Escolher 3K</a>
-          </article>
-          <article class="challenge-card featured">
-            <span>6K</span>
-            <h3>Quero ir além</h3>
-            <p>Corrida para quem quer evoluir e viver a experiência completa.</p>
-            <a class="button button-primary" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Escolher 6K</a>
-          </article>
-          <article class="challenge-card">
-            <span>9K</span>
-            <h3>Quero me superar</h3>
-            <p>Corrida para quem busca desafio, constância e superação.</p>
-            <a class="button button-dark" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Escolher 9K</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="section event-section" id="evento" aria-labelledby="evento-title">
-        <div class="section-heading">
-          <p class="section-kicker">Não é só a largada</p>
-          <h2 id="evento-title">Uma manhã para corredores, caminhantes, famílias e grupos.</h2>
-        </div>
-
-        <div class="feature-grid">
-          <article class="feature-card"><span>3K</span><strong>Percurso 3 km</strong></article>
-          <article class="feature-card"><span>6K</span><strong>Percurso 6 km</strong></article>
-          <article class="feature-card"><span>9K</span><strong>Percurso 9 km</strong></article>
-          <article class="feature-card"><span>♪</span><strong>Show Gospel</strong></article>
-          <article class="feature-card"><span>FIN</span><strong>Medalha Finisher</strong></article>
-        </div>
-
-        <div class="route-layout" id="local">
-          <figure class="location-photo">
-            <img
-              src="assets/local-praca-perrela-andradas.jpeg"
-              alt="Arte do local do evento em frente ao Boullevard Shopping, Avenida dos Andradas"
-            />
-            <figcaption>Em frente ao Boullevard Shopping · Avenida dos Andradas</figcaption>
-          </figure>
-          <div>
-            <p class="section-kicker">Local</p>
-            <h3>Em frente ao Boullevard Shopping, Avenida dos Andradas</h3>
-            <p>
-              A arena e a largada serão realizadas em frente ao Boullevard Shopping, na Avenida dos Andradas,
-              em Belo Horizonte/MG. A estrutura do evento contará com palco, tendas,
-              alimentação, banheiros, ambulância e médicos, guarda-volumes e pontos de hidratação.
-            </p>
-            <div class="location-actions">
-              <a class="button button-dark" href="https://www.google.com/maps/search/?api=1&query=Boulevard%20Shopping%20Avenida%20dos%20Andradas%20Belo%20Horizonte%20MG" target="_blank" rel="noreferrer">Google Maps</a>
-              <a class="button button-secondary-dark" href="https://waze.com/ul?q=Boulevard%20Shopping%20Avenida%20dos%20Andradas%20Belo%20Horizonte%20MG&navigate=yes" target="_blank" rel="noreferrer">Waze</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section experience-section" aria-labelledby="vivencia-title">
-        <div class="section-heading">
-          <p class="section-kicker">O que você vai viver</p>
-          <h2 id="vivencia-title">Esporte, música e experiências para toda a família.</h2>
-        </div>
-        <div class="experience-grid">
-          <span>Corrida 6 km e 9 km</span>
-          <span>Caminhada 3 km</span>
-          <span>Show Gospel</span>
-          <span>Medalha Finisher</span>
-          <span>Premiação</span>
-          <span>Cobertura de fotos e vídeos</span>
-        </div>
+        <div class="training-card"><span>Primeira vez?</span><ul><li>Não precisa correr.</li><li>Não precisa conhecer ninguém.</li><li>Não precisa ter equipamento profissional.</li><li>Basta chegar.</li></ul></div>
       </section>
 
       <section class="section testimonials-section" aria-labelledby="depoimentos-title">
         <div class="section-heading">
           <p class="section-kicker">Quem vive, entende</p>
-          <h2 id="depoimentos-title">Histórias reais do movimento terão espaço aqui.</h2>
+          <h2 id="depoimentos-title">Histórias reais vão aparecer em vídeo.</h2>
         </div>
-        <div class="testimonial-placeholder">
-          <p>
-            Esta área está preparada para receber vídeos, fotos, nomes e depoimentos curtos de participantes dos
-            treinos, encontros e ações oficiais do LEGADO RUN.
-          </p>
-          <a class="button button-dark" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Fazer parte dessa história</a>
+        <div class="testimonial-grid">
+          <article><span>Comecei</span><p>Depoimento vertical de quem deu o primeiro passo.</p></article>
+          <article><span>Mudei</span><p>Relatos sobre saúde, disciplina e constância.</p></article>
+          <article><span>Pertenço</span><p>Histórias de amizade, fé, comunidade e propósito.</p></article>
+        </div>
+        <a class="button button-dark" href="historias.html">Ver histórias</a>
+      </section>
+
+      <section class="section pillars-section" aria-labelledby="pilares-title">
+        <div class="section-heading"><p class="section-kicker">LEGADO RUN</p><h2 id="pilares-title">Movimento. Comunidade. Propósito.</h2></div>
+        <div class="pillar-grid">
+          <article><span>Saúde</span><p>Começar. Movimentar. Evoluir.</p></article>
+          <article><span>Comunidade</span><p>Encontrar pessoas. Construir amizades. Caminhar junto.</p></article>
+          <article><span>Propósito</span><p>Entender que evolução não termina em você.</p></article>
+          <article><span>Legado</span><p>Deixar marcas positivas por onde passar.</p></article>
+        </div>
+      </section>
+
+      <section class="statement-break" aria-label="Frase do movimento">
+        <p>Você não precisa ser corredor para começar. <strong>Mas talvez depois de começar você descubra que é.</strong></p>
+      </section>
+
+      <section class="section first-time-section" id="primeira-vez" aria-labelledby="primeira-vez-title">
+        <div class="section-heading"><p class="section-kicker">Primeira vez?</p><h2 id="primeira-vez-title">Nunca correu com a gente?</h2></div>
+        <div class="starter-grid">
+          <article><h3>O que levar</h3><p>Roupa confortável, água e disposição para começar no seu ritmo.</p></article>
+          <article><h3>Como funciona</h3><p>O grupo se encontra, aquece, caminha ou corre e encerra junto.</p></article>
+          <article><h3>Qual ritmo</h3><p>Existe espaço para quem caminha, para quem começa e para quem já corre.</p></article>
+          <article><h3>Posso levar alguém?</h3><p>Sim. O movimento nasce para receber pessoas.</p></article>
+        </div>
+        <button class="button button-primary" type="button" data-open-join>Quero ir ao próximo treino</button>
+      </section>
+
+      <section class="section community-section" aria-labelledby="comunidade-title">
+        <div class="section-copy">
+          <p class="section-kicker">A comunidade</p>
+          <h2 id="comunidade-title">Do treino para a vida.</h2>
+          <p>Corrida, disciplina, saúde, família, fé, propósito e comunidade. Este será o espaço vivo para fotos, vídeos, histórias e conteúdos oficiais do LEGADO RUN.</p>
+          <a class="button button-dark" href="comunidade.html">Entrar na comunidade visual</a>
+        </div>
+        <div class="community-tags" aria-label="Temas da comunidade"><span>Treinos</span><span>Encontros</span><span>Bastidores</span><span>Pessoas</span><span>Histórias</span><span>Corrida</span></div>
+      </section>
+
+      <section class="section race-section" id="corrida" aria-labelledby="corrida-title">
+        <div class="section-heading"><p class="section-kicker">01.11.2026</p><h2 id="corrida-title">A comunidade tem um encontro marcado.</h2><p>Você vai poder dizer: eu estava na primeira.</p></div>
+        <figure class="race-art"><img src="assets/legado-run-hero-oficial.png" alt="Arte oficial da 1ª corrida LEGADO RUN" loading="lazy" /></figure>
+        <div class="distance-grid">
+          <article><span>3K</span><strong>Caminhada</strong><p>Meu primeiro passo.</p></article>
+          <article><span>6K</span><strong>Corrida</strong><p>Quero ir além.</p></article>
+          <article><span>9K</span><strong>Corrida</strong><p>Quero me superar.</p></article>
+        </div>
+      </section>
+
+      <section class="section location-section" id="local" aria-labelledby="local-title">
+        <figure class="location-photo"><img src="assets/local-praca-perrela-andradas.jpeg" alt="Local do evento em frente ao Boullevard Shopping, Avenida dos Andradas" loading="lazy" /><figcaption>Em frente ao Boullevard Shopping · Avenida dos Andradas</figcaption></figure>
+        <div class="section-copy">
+          <p class="section-kicker">Local</p>
+          <h2 id="local-title">Em frente ao Boullevard Shopping.</h2>
+          <p>A arena e a largada serão realizadas na Avenida dos Andradas, em Belo Horizonte/MG. A estrutura prevista contempla palco, tendas, alimentação, banheiros, ambulância e médicos, guarda-volumes e pontos de hidratação.</p>
+          <div class="location-actions">
+            <a class="button button-dark" href="https://www.google.com/maps/search/?api=1&query=Boulevard%20Shopping%20Avenida%20dos%20Andradas%20Belo%20Horizonte%20MG" target="_blank" rel="noreferrer">Google Maps</a>
+            <a class="button button-secondary-dark" href="https://waze.com/ul?q=Boulevard%20Shopping%20Avenida%20dos%20Andradas%20Belo%20Horizonte%20MG&navigate=yes" target="_blank" rel="noreferrer">Waze</a>
+          </div>
         </div>
       </section>
 
       <section class="section kit-section" id="kit" aria-labelledby="kit-title">
-        <figure class="kit-artwork">
-          <img src="assets/kit-oficial-legado-run-completo.png" alt="Arte do kit LEGADO RUN com camisa oficial, medalha finisher, gel energético, número de peito e meia" />
-          <figcaption>Kit oficial do participante</figcaption>
-        </figure>
-        <div class="section-copy">
-          <p class="section-kicker">Kit oficial do atleta</p>
-          <h2 id="kit-title">Você não vai apenas correr o LEGADO. Você vai vestir essa história.</h2>
-          <p>
-            Escolha entre uma inscrição simples ou a experiência completa com a camisa oficial do movimento.
-          </p>
-          <div class="kit-options">
-            <span>Kit simples</span>
-            <span>Kit completo com camisa oficial</span>
-          </div>
-        </div>
+        <figure class="kit-artwork"><img src="assets/kit-oficial-legado-run-completo.png" alt="Kit oficial LEGADO RUN com camisa, medalha, número de peito e itens oficiais" loading="lazy" /></figure>
+        <div class="section-copy"><p class="section-kicker">Kit</p><h2 id="kit-title">Você não vai apenas participar. Vai levar essa história com você.</h2><p>Escolha entre kit simples ou kit completo com camisa oficial.</p></div>
       </section>
 
-      <section class="section first-edition-section" aria-labelledby="primeira-title">
-        <div class="first-edition-content">
-          <p class="section-kicker">Primeira edição</p>
-          <h2 id="primeira-title">Você vai poder dizer: eu estava na primeira.</h2>
-          <p>
-            Haverá outras edições, outros percursos e outras histórias. Mas a primeira acontece uma única vez:
-            01.11.2026.
-          </p>
-          <a class="button button-primary" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Eu quero estar lá</a>
-        </div>
-      </section>
-
-      <section class="section identity-section" aria-labelledby="identidade-title">
-        <div class="section-heading">
-          <p class="section-kicker">Corremos com propósito</p>
-          <h2 id="identidade-title">Fé, esporte, comunidade e legado em uma mesma direção.</h2>
-        </div>
-        <div class="identity-grid">
-          <article><span>Fé</span><p>Uma motivação que inspira, fortalece e aponta para uma vida com sentido.</p></article>
-          <article><span>Esporte</span><p>Movimento, disciplina, saúde e superação em cada quilômetro.</p></article>
-          <article><span>Comunidade</span><p>Pessoas correndo juntas, celebrando juntas e avançando juntas.</p></article>
-          <article><span>Legado</span><p>Marcas positivas deixadas na cidade, nas famílias e em cada participante.</p></article>
-        </div>
-      </section>
-
-      <section class="section timeline-section" id="cronograma" aria-labelledby="cronograma-title">
-        <div class="section-heading">
-          <p class="section-kicker">Cronograma</p>
-          <h2 id="cronograma-title">Programação do evento</h2>
-        </div>
+      <section class="section schedule-section" id="cronograma" aria-labelledby="cronograma-title">
+        <div class="section-heading"><p class="section-kicker">Experiência do evento</p><h2 id="cronograma-title">Programação do evento</h2></div>
         <ol class="timeline">
-          <li><time>07h00</time><span>Início do evento</span></li>
-          <li><time>07h30</time><span>Abertura do evento</span></li>
-          <li><time>08h00</time><span>Aquecimento</span></li>
-          <li><time>08h15</time><span>Largada 6 km e 9 km</span></li>
-          <li><time>08h55</time><span>Largada 3 km</span></li>
-          <li><time>10h00</time><span>Show Gospel</span></li>
-          <li><time>11h00</time><span>Premiação e comunicados</span></li>
-          <li><time>12h00</time><span>Encerramento</span></li>
+          <li><time>07h00</time><span>Início do evento</span></li><li><time>07h30</time><span>Abertura do evento</span></li><li><time>08h00</time><span>Aquecimento</span></li><li><time>08h15</time><span>Largada 6 km e 9 km</span></li><li><time>08h55</time><span>Largada 3 km</span></li><li><time>10h00</time><span>Show Gospel</span></li><li><time>11h00</time><span>Premiação e comunicados</span></li><li><time>12h00</time><span>Encerramento</span></li>
         </ol>
       </section>
 
-      <section class="section audience-section" aria-labelledby="publico-title">
-        <div class="section-copy">
-          <p class="section-kicker">Quem pode participar?</p>
-          <h2 id="publico-title">O LEGADO RUN foi pensado para muita gente.</h2>
-        </div>
-        <div class="pill-grid">
-          <span>Corredores experientes</span>
-          <span>Corredores iniciantes</span>
-          <span>Famílias</span>
-          <span>Jovens</span>
-          <span>Empresas</span>
-          <span>Grupos de amigos</span>
-          <span>Igrejas</span>
-          <span>Assessorias esportivas</span>
+      <section class="countdown-band" aria-labelledby="countdown-title">
+        <div><p class="section-kicker">Faltam para a 1ª corrida</p><h2 id="countdown-title">01 de novembro de 2026</h2></div>
+        <div class="countdown" data-event-date="2026-11-01T07:00:00-03:00" aria-live="polite">
+          <div><strong data-days>--</strong><span>dias</span></div><div><strong data-hours>--</strong><span>horas</span></div><div><strong data-minutes>--</strong><span>min</span></div><div><strong data-seconds>--</strong><span>seg</span></div>
         </div>
       </section>
 
       <section class="section registration-section" id="inscricoes" aria-labelledby="inscricoes-title">
-        <div>
-          <p class="section-kicker">Inscrições</p>
-          <h2 id="inscricoes-title">Vagas limitadas para o 1º lote.</h2>
-          <p>O valor é o mesmo para 3 km, 6 km e 9 km. Escolha a opção que faz mais sentido para você.</p>
-          <div class="registration-highlights" aria-label="Informações importantes da inscrição">
-            <span>Compra segura pela Ticket Sports</span>
-            <span>Kit simples ou completo</span>
-            <span>3 km, 6 km ou 9 km</span>
-          </div>
-        </div>
-        <div class="pricing-grid">
-          <article class="price-card">
-            <span>Kit simples</span>
-            <h3>3 km · 6 km · 9 km</h3>
-            <strong data-price-simple>R$ 109,90 + taxas plataforma</strong>
-          </article>
-          <article class="price-card featured">
-            <span>Kit completo</span>
-            <h3>Inclui camisa oficial</h3>
-            <strong data-price-complete>R$ 139,90 + taxas plataforma</strong>
-          </article>
-        </div>
-        <a class="button button-primary button-wide" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">
-          Garantir minha vaga
-        </a>
+        <div><p class="section-kicker">Correr a primeira</p><h2 id="inscricoes-title">Escolha como você vai participar.</h2><p>O valor é o mesmo para 3 km, 6 km e 9 km.</p></div>
+        <div class="pricing-grid"><article class="price-card"><span>Kit simples</span><strong data-price-simple>R$ 109,90 + taxas plataforma</strong></article><article class="price-card featured"><span>Kit completo</span><strong data-price-complete>R$ 139,90 + taxas plataforma</strong></article></div>
+        <a class="button button-primary button-wide" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer" data-track="click_registration">Eu quero estar na primeira</a>
       </section>
 
       <section class="section sponsor-section" id="patrocinadores" aria-labelledby="patrocinadores-title">
-        <div class="section-heading">
-          <p class="section-kicker">Patrocinadores</p>
-          <h2 id="patrocinadores-title">Sua marca associada a saúde, família e impacto.</h2>
+        <div class="section-heading"><p class="section-kicker">Parceiros</p><h2 id="patrocinadores-title">Marcas que já caminham com o movimento.</h2></div>
+        <div class="logo-wall" aria-label="Empresas parceiras">
+          <span class="sponsor-logo"><img src="assets/logo-viagem-perfeita.png" alt="Viagem Perfeita Turismo e Eventos" loading="lazy" /></span>
+          <span class="sponsor-logo"><img src="assets/logo-yoav-eventos.jpeg" alt="YOAV Eventos" loading="lazy" /></span>
+          <span class="sponsor-logo"><img src="assets/logo-master-clean.jpeg" alt="Master Clean Lavanderia" loading="lazy" /></span>
+          <span class="sponsor-logo"><img src="assets/logo-jets-grafica.jpeg" alt="Jets Cartuchos e Copiadora Gráfica" loading="lazy" /></span>
         </div>
-        <div class="sponsor-layout">
-          <div class="sponsor-copy">
-            <p>
-              O LEGADO RUN conecta empresas a um movimento de qualidade de vida, esporte, desenvolvimento humano
-              e impacto social em Belo Horizonte.
-            </p>
-            <div class="sponsor-reach" aria-label="Canais de divulgação do LEGADO RUN">
-              <h3>Divulgação da marca</h3>
-              <p>
-                O evento será divulgado no Instagram oficial do LEGADO RUN, Instagram do idealizador e dos parceiros,
-                site oficial, landing pages do evento, grupos e listas de transmissão no WhatsApp, assessorias e grupos
-                de corrida, materiais impressos, banners, vídeos e conteúdos produzidos pelos participantes.
-              </p>
-              <p>
-                A campanha também estará na <strong>Ticket Sports</strong>, uma das maiores plataformas de inscrições e
-                eventos esportivos do Brasil, com divulgação em suas plataformas, na Federação Mineira de Atletismo,
-                nos encontros preparatórios e na cobertura fotográfica e audiovisual antes, durante e após a corrida.
-              </p>
-            </div>
-            <a class="button button-primary" href="https://legadorun.github.io/patrocinadores/" target="_blank" rel="noreferrer">
-              Quero ser patrocinador
-            </a>
-          </div>
-          <div class="logo-wall" aria-label="Logos dos patrocinadores">
-            <span class="sponsor-logo sponsor-logo-wide"><img src="assets/logo-viagem-perfeita.png" alt="Viagem Perfeita Turismo e Eventos" /></span>
-            <span class="sponsor-logo sponsor-logo-wide"><img src="assets/logo-yoav-eventos.jpeg" alt="YOAV Eventos" /></span>
-            <span class="sponsor-logo sponsor-logo-wide"><img src="assets/logo-master-clean.jpeg" alt="Master Clean Lavanderia" /></span>
-            <span class="sponsor-logo sponsor-logo-square"><img src="assets/logo-jets-grafica.jpeg" alt="Jets Cartuchos e Copiadora Gráfica" /></span>
-            <span>Logo</span>
-          </div>
+        <div class="sponsor-reach">
+          <h3>Divulgação da marca</h3>
+          <p>O evento será divulgado no Instagram oficial do LEGADO RUN, Instagram do idealizador e dos parceiros, site oficial, landing pages do evento, grupos e listas de transmissão no WhatsApp, assessorias e grupos de corrida, materiais impressos, banners, vídeos e conteúdos produzidos pelos participantes.</p>
+          <p>A campanha também estará na <strong>Ticket Sports</strong>, uma das maiores plataformas de inscrições e eventos esportivos do Brasil, com divulgações nas plataformas, Federação Mineira de Atletismo, encontros preparatórios e cobertura fotográfica e audiovisual antes, durante e após a corrida.</p>
+          <a class="button button-primary" href="https://legadorun.github.io/patrocinadores/" target="_blank" rel="noreferrer">Quero ser patrocinador</a>
         </div>
       </section>
 
-      <section class="section faq-section" id="faq" aria-labelledby="faq-title">
-        <div class="section-heading">
-          <p class="section-kicker">Dúvidas frequentes</p>
-          <h2 id="faq-title">Informações rápidas</h2>
-        </div>
-        <div class="faq-list">
-          <details>
-            <summary>Onde será o evento?</summary>
-            <p>Em frente ao Boullevard Shopping, Avenida dos Andradas – Belo Horizonte/MG.</p>
-          </details>
-          <details>
-            <summary>Todos recebem medalha?</summary>
-            <p>Sim. Todos os participantes recebem medalha finisher.</p>
-          </details>
-          <details>
-            <summary>Posso caminhar?</summary>
-            <p>Sim. O percurso de 3 km é ideal para quem deseja caminhar ou começar com uma distância menor.</p>
-          </details>
-          <details>
-            <summary>Preciso ser corredor experiente?</summary>
-            <p>Não. O evento foi pensado para corredores experientes, iniciantes e pessoas que desejam participar caminhando.</p>
-          </details>
-          <details>
-            <summary>Onde faço minha inscrição?</summary>
-            <p>As inscrições são realizadas pela Ticket Sports, no botão “Quero me inscrever”.</p>
-          </details>
-          <details>
-            <summary>Haverá entrega de kits?</summary>
-            <p>Sim. As informações serão divulgadas próximo ao evento.</p>
-          </details>
-          <details>
-            <summary>Haverá estacionamento?</summary>
-            <p>As orientações serão divulgadas aos participantes.</p>
-          </details>
-          <details>
-            <summary>Haverá hidratação?</summary>
-            <p>Sim. A estrutura do evento prevê pontos de hidratação.</p>
-          </details>
-          <details>
-            <summary>Como serão premiação e comunicados?</summary>
-            <p>A programação oficial prevê premiação e comunicados às 11h00.</p>
-          </details>
-          <details>
-            <summary>O evento acontece com chuva?</summary>
-            <p>Orientações oficiais serão divulgadas aos participantes próximo ao evento.</p>
-          </details>
-        </div>
+      <section class="section instagram-section" aria-labelledby="instagram-title">
+        <div class="section-copy"><p class="section-kicker">Do treino para o feed</p><h2 id="instagram-title">Aconteceu agora.</h2><p>A integração com posts recentes será feita por API oficial quando estiver configurada. Enquanto isso, o site usa apenas conteúdo local selecionado e aprovado.</p><a class="button button-dark" href="https://www.instagram.com/legadorun/" target="_blank" rel="noreferrer" data-track="click_instagram">Acompanhar @legadorun</a></div>
+      </section>
+
+      <section class="section join-section" id="fazer-parte" aria-labelledby="join-title">
+        <div class="section-heading"><p class="section-kicker">Não acompanhe de longe</p><h2 id="join-title">Entre para a comunidade.</h2><p>Receba informações sobre treinos, encontros, corrida, novidades, conteúdos e experiências.</p></div>
+        <button class="button button-primary" type="button" data-open-join>Fazer parte</button>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div>
-        <strong>LEGADO RUN</strong>
-        <p>Cada passo deixa uma marca. Cada marca constrói um legado.</p>
-      </div>
-      <div class="footer-meta">
-        <span>Realização: LEGADO</span>
-        <span>Produção Executiva: YOAV EVENTOS</span>
-        <span>Organização: YOAV SOLUÇÕES E SERVIÇOS LTDA · CNPJ 60.502.538/0001-26</span>
-      </div>
-      <div class="footer-contact">
-        <a href="https://instagram.com/legadorun" target="_blank" rel="noreferrer">@legadorun</a>
-        <a href="mailto:legadorunn@gmail.com">legadorunn@gmail.com</a>
-      </div>
+      <div><strong>LEGADO RUN</strong><p>Um lugar para fazer parte. Um movimento para permanecer.</p></div>
+      <div class="footer-meta"><span>Realização: LEGADO</span><span>Produção Executiva: YOAV EVENTOS</span><span>Organização: YOAV SOLUÇÕES E SERVIÇOS LTDA · CNPJ 60.502.538/0001-26</span></div>
+      <div class="footer-contact"><a href="https://instagram.com/legadorun" target="_blank" rel="noreferrer">@legadorun</a><a href="mailto:legadorunn@gmail.com">legadorunn@gmail.com</a></div>
     </footer>
 
-    <a class="sticky-register" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Quero me inscrever</a>
-    <a class="back-to-top" href="#topo" aria-label="Voltar ao início">↑</a>
+    <div class="join-modal" data-join-modal hidden>
+      <div class="join-modal-backdrop" data-close-join></div>
+      <section class="join-dialog" role="dialog" aria-modal="true" aria-labelledby="join-dialog-title">
+        <button class="modal-close" type="button" data-close-join aria-label="Fechar">×</button>
+        <p class="section-kicker">Fazer parte</p>
+        <h2 id="join-dialog-title">O que você quer fazer?</h2>
+        <div class="join-options">
+          <a href="treinos.html">Participar do próximo treino</a>
+          <a href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noreferrer">Correr a 1ª corrida</a>
+          <a href="https://chat.whatsapp.com/IEJSDWF9a0ZLIFcD13W5qf" target="_blank" rel="noreferrer">Entrar na comunidade</a>
+          <a href="https://www.instagram.com/legadorun/" target="_blank" rel="noreferrer">Acompanhar o movimento</a>
+        </div>
+      </section>
+    </div>
 
-    <script src="script.js?v=50963b4"></script>
+    <button class="sticky-register" type="button" data-open-join>Fazer parte</button>
+    <a class="back-to-top" href="#topo" aria-label="Voltar ao início">↑</a>
+    <script src="script.js?v=legado-movimento-1"></script>
   </body>
 </html>
