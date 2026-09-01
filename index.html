@@ -9,22 +9,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=legado-premium-1" />
+    <link rel="stylesheet" href="styles.css?v=legado-app-1" />
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
     <header class="site-header">
       <a class="brand" href="/" aria-label="LEGADO RUN"><span class="brand-mark">LR</span><strong>LEGADO RUN</strong></a>
-      <nav class="main-nav" aria-label="Navegação principal">
-        <a href="movimento.html">Movimento</a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>
+        <span>Menu</span>
+      </button>
+      <nav class="main-nav" id="main-nav" aria-label="Navegação principal" data-main-nav>
+        <a href="#topo">Início</a>
+        <a href="movimento.html">O Movimento</a>
         <a href="treinos.html">Treinos</a>
+        <a href="#corrida">Eventos</a>
         <a href="comunidade.html">Comunidade</a>
         <a href="historias.html">Histórias</a>
-        <a href="#corrida">1ª corrida</a>
+        <a href="#conteudos">Conteúdos</a>
         <a href="#patrocinadores">Parceiros</a>
+        <a href="#contato">Contato</a>
+        <a class="nav-app-link" href="https://legado-run.vercel.app/" target="_blank" rel="noopener noreferrer" data-app-link data-track="click_acessar_app">Acessar o App</a>
+        <button class="nav-join-link" type="button" data-open-join data-track="click_fazer_parte">Fazer parte</button>
       </nav>
-      <button class="header-cta" type="button" data-open-join data-track="click_fazer_parte">Fazer parte</button>
+      <div class="header-actions">
+        <a class="header-app" href="https://legado-run.vercel.app/" target="_blank" rel="noopener noreferrer" data-app-link data-track="click_acessar_app">Acessar o App</a>
+        <button class="header-cta" type="button" data-open-join data-track="click_fazer_parte">Fazer parte</button>
+      </div>
     </header>
 
     <main id="conteudo">
@@ -136,6 +147,41 @@
         <div class="community-tags" aria-label="Temas da comunidade"><span>Treinos</span><span>Encontros</span><span>Bastidores</span><span>Pessoas</span><span>Histórias</span><span>Corrida</span></div>
       </section>
 
+      <section class="section app-section" id="aplicativo" aria-labelledby="app-title">
+        <div class="app-copy">
+          <p class="section-kicker">Baixe o aplicativo</p>
+          <h2 id="app-title">LEGADO RUN também acompanha cada passo.</h2>
+          <p>Acesse treinos, eventos, comunidade e experiências do movimento LEGADO RUN em um só lugar.</p>
+          <div class="app-features" aria-label="Recursos do aplicativo">
+            <span>Treinos</span>
+            <span>Eventos</span>
+            <span>Comunidade</span>
+            <span>Experiências</span>
+          </div>
+          <div class="app-actions">
+            <a class="button button-primary" href="https://legado-run.vercel.app/" target="_blank" rel="noopener noreferrer" data-app-link data-track="click_acessar_app">Acessar o App</a>
+            <a class="button button-dark" href="https://play.google.com/apps/internaltest/4701310693878336021" target="_blank" rel="noopener noreferrer" data-android-link data-track="click_baixar_android">Baixar para Android</a>
+            <button class="button button-disabled" type="button" disabled aria-disabled="true">Em breve na App Store</button>
+          </div>
+        </div>
+        <div class="app-visual" aria-label="Aplicativo oficial LEGADO RUN">
+          <div class="phone-mockup" aria-hidden="true">
+            <div class="phone-top"></div>
+            <div class="phone-screen">
+              <span class="mini-brand">LR</span>
+              <strong>LEGADO RUN</strong>
+              <p>Treinos, eventos e comunidade em um só lugar.</p>
+              <div class="mini-card">Próximo treino</div>
+              <div class="mini-card accent">1ª corrida • 01.11.2026</div>
+            </div>
+          </div>
+          <a class="app-qr" href="https://legado-run.vercel.app/" target="_blank" rel="noopener noreferrer" data-app-link data-track="click_qr_code" aria-label="Abrir aplicativo LEGADO RUN pelo QR Code">
+            <img src="assets/qr-legado-run-app.svg" alt="QR Code para acessar o aplicativo LEGADO RUN" loading="lazy" />
+            <span>Escaneie para acessar</span>
+          </a>
+        </div>
+      </section>
+
       <section class="section race-section" id="corrida" aria-labelledby="corrida-title">
         <div class="section-heading"><p class="section-kicker">01.11.2026</p><h2 id="corrida-title">A comunidade tem um encontro marcado.</h2><p>Você vai poder dizer: eu estava na primeira.</p></div>
         <figure class="race-art"><img src="assets/arte-legado-run-oficial-20260901.jpg" alt="Arte oficial da 1ª corrida LEGADO RUN" loading="lazy" /></figure>
@@ -200,7 +246,7 @@
         </div>
       </section>
 
-      <section class="section instagram-section" aria-labelledby="instagram-title">
+      <section class="section instagram-section" id="conteudos" aria-labelledby="instagram-title">
         <div class="section-copy"><p class="section-kicker">Do treino para o feed</p><h2 id="instagram-title">Aconteceu agora.</h2><p>A integração com posts recentes será feita por API oficial quando estiver configurada. Enquanto isso, o site usa apenas conteúdo local selecionado e aprovado, além da biblioteca oficial no Google Fotos.</p><div class="inline-actions"><a class="button button-dark" href="https://www.instagram.com/legadorun/" target="_blank" rel="noreferrer" data-track="click_instagram">Acompanhar @legadorun</a><a class="button button-secondary-dark" href="https://photos.app.goo.gl/bmxkfRYdnv81bCmJ9" target="_blank" rel="noreferrer">Ver biblioteca</a></div></div>
       </section>
 
@@ -210,10 +256,10 @@
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="contato">
       <div><strong>LEGADO RUN</strong><p>Um lugar para fazer parte. Um movimento para permanecer.</p></div>
       <div class="footer-meta"><span>Realização: LEGADO</span><span>Produção Executiva: YOAV EVENTOS</span><span>Organização: YOAV SOLUÇÕES E SERVIÇOS LTDA · CNPJ 60.502.538/0001-26</span></div>
-      <div class="footer-contact"><a href="https://instagram.com/legadorun" target="_blank" rel="noreferrer">@legadorun</a><a href="mailto:legadorunn@gmail.com">legadorunn@gmail.com</a></div>
+      <div class="footer-contact"><a href="https://instagram.com/legadorun" target="_blank" rel="noreferrer">@legadorun</a><a href="mailto:legadorunn@gmail.com">legadorunn@gmail.com</a><a href="https://legado-run.vercel.app/" target="_blank" rel="noopener noreferrer" data-app-link data-track="click_acessar_app">Aplicativo LEGADO RUN</a></div>
     </footer>
 
     <div class="join-modal" data-join-modal hidden>
@@ -233,6 +279,7 @@
 
     <button class="sticky-register" type="button" data-open-join>Fazer parte</button>
     <a class="back-to-top" href="#topo" aria-label="Voltar ao início">↑</a>
-    <script src="script.js?v=legado-premium-1"></script>
+    <script src="app-config.js?v=legado-app-1"></script>
+    <script src="script.js?v=legado-app-1"></script>
   </body>
 </html>
