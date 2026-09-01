@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" fill="#11120f"/>
-  <rect x="6" y="6" width="52" height="52" fill="none" stroke="#d5a83b" stroke-width="3"/>
-  <text x="32" y="39" text-anchor="middle" fill="#d5a83b" font-family="Arial, sans-serif" font-size="22" font-weight="800">LR</text>
+  <title>LEGADO RUN</title>
+  <path fill="#11120f" d="M9 11h12v32h18v10H9z"/>
+  <path fill="#9cc400" d="M24 11h31L41 31l16 22H43L28 32l13-12H24z"/>
+  <path fill="#f6f7ee" d="M27 19h15l-8 8h-7z"/>
 </svg>
