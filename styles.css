@@ -197,7 +197,7 @@ button { font: inherit; }
 .hero-fallback {
   z-index: 0;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   opacity: 0.94;
 }
 .hero-scrim {
@@ -981,7 +981,7 @@ h3 {
     align-items: end;
   }
   .hero-fallback {
-    object-position: 58% top;
+    object-position: 56% center;
     opacity: 0.86;
   }
   .hero-scrim {
@@ -1103,7 +1103,7 @@ h3 {
     object-fit: cover;
   }
   .race-art img { object-position: 45% center; }
-  .kit-artwork img { object-position: 40% center; }
+  .kit-artwork img { object-position: center top; }
   .location-photo img { object-position: center; }
   .timeline li {
     min-height: auto;
