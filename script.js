@@ -74,6 +74,7 @@ function closeMenu() {
   if (!menuToggle || !mainNav) return;
   menuToggle.setAttribute("aria-expanded", "false");
   mainNav.classList.remove("is-open");
+  document.body.classList.remove("menu-open");
 }
 
 function toggleMenu() {
@@ -81,6 +82,7 @@ function toggleMenu() {
   const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
   menuToggle.setAttribute("aria-expanded", String(!isOpen));
   mainNav.classList.toggle("is-open", !isOpen);
+  document.body.classList.toggle("menu-open", !isOpen);
 }
 
 cleanTrackingQuery();
@@ -97,6 +99,16 @@ if (mainNav) mainNav.querySelectorAll("a, button").forEach((item) => item.addEve
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeJoinModal();
   if (event.key === "Escape") closeMenu();
+});
+
+document.addEventListener("click", (event) => {
+  if (!mainNav || !menuToggle || !mainNav.classList.contains("is-open")) return;
+  if (mainNav.contains(event.target) || menuToggle.contains(event.target)) return;
+  closeMenu();
+});
+
+window.addEventListener("resize", () => {
+  if (window.matchMedia("(min-width: 1001px)").matches) closeMenu();
 });
 
 document.querySelectorAll("[data-track]").forEach((element) => {
