@@ -5,6 +5,7 @@ const closeJoinButtons = document.querySelectorAll("[data-close-join]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
 const mainNav = document.querySelector("[data-main-nav]");
 const appConfig = window.LEGADO_APP_CONFIG || {};
+const analyticsConfig = appConfig.analytics || {};
 
 const currentLot = {
   priceSimple: "R$ 109,90 + taxas plataforma",
@@ -19,9 +20,63 @@ function cleanTrackingQuery() {
 function trackEvent(name) {
   window.dataLayer = window.dataLayer || [];
   const device = window.matchMedia("(max-width: 680px)").matches ? "mobile" : "desktop";
-  window.dataLayer.push({ event: name, device });
+  const payload = { event: name, device };
+  window.dataLayer.push(payload);
+  if (typeof window.gtag === "function") {
+    window.gtag("event", name, { device_category: device });
+  }
+  if (typeof window.fbq === "function") {
+    window.fbq("trackCustom", name, { device });
+  }
   if (name === "click_acessar_app" || name === "click_qr_code" || name === "click_baixar_android") {
-    window.dataLayer.push({ event: `tentativa_acesso_app_${device}` });
+    const deviceEvent = `tentativa_acesso_app_${device}`;
+    window.dataLayer.push({ event: deviceEvent });
+    if (typeof window.gtag === "function") {
+      window.gtag("event", deviceEvent);
+    }
+    if (typeof window.fbq === "function") {
+      window.fbq("trackCustom", deviceEvent);
+    }
+  }
+}
+
+function loadExternalScript(src, onload) {
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = src;
+  if (onload) script.addEventListener("load", onload, { once: true });
+  document.head.appendChild(script);
+}
+
+function initAnalytics() {
+  const { googleMeasurementId, googleTagManagerId, metaPixelId } = analyticsConfig;
+
+  window.dataLayer = window.dataLayer || [];
+
+  if (googleTagManagerId) {
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    loadExternalScript(`https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(googleTagManagerId)}`);
+  }
+
+  if (googleMeasurementId) {
+    window.gtag = window.gtag || function gtag() {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", googleMeasurementId, { send_page_view: true });
+    loadExternalScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleMeasurementId)}`);
+  }
+
+  if (metaPixelId) {
+    window.fbq = window.fbq || function fbq() {
+      window.fbq.callMethod ? window.fbq.callMethod.apply(window.fbq, arguments) : window.fbq.queue.push(arguments);
+    };
+    window.fbq.queue = window.fbq.queue || [];
+    window.fbq.loaded = true;
+    window.fbq.version = "2.0";
+    window.fbq("init", metaPixelId);
+    window.fbq("track", "PageView");
+    loadExternalScript("https://connect.facebook.net/en_US/fbevents.js");
   }
 }
 
@@ -31,6 +86,20 @@ function applyAppLinks() {
   });
   document.querySelectorAll("[data-android-link]").forEach((link) => {
     if (appConfig.androidUrl) link.href = appConfig.androidUrl;
+  });
+  document.querySelectorAll("[data-app-store-link]").forEach((element) => {
+    element.textContent = appConfig.appStoreUrl ? "Baixar na App Store" : (appConfig.appStoreLabel || "Em breve na App Store");
+    if (!appConfig.appStoreUrl) return;
+
+    const link = document.createElement("a");
+    link.className = element.className.replace("button-disabled", "button-dark");
+    link.href = appConfig.appStoreUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.dataset.appStoreLink = "";
+    link.dataset.track = "click_baixar_app_store";
+    link.textContent = "Baixar na App Store";
+    element.replaceWith(link);
   });
 }
 
@@ -85,6 +154,7 @@ function toggleMenu() {
   document.body.classList.toggle("menu-open", !isOpen);
 }
 
+initAnalytics();
 cleanTrackingQuery();
 applyAppLinks();
 updatePricing();
