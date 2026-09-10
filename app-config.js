@@ -4,7 +4,7 @@ window.LEGADO_APP_CONFIG = {
   appStoreUrl: "",
   appStoreLabel: "Em breve na App Store",
   analytics: {
-    googleMeasurementId: "",
+    googleMeasurementId: "G-DVMY2JNDRM",
     googleTagManagerId: "",
     metaPixelId: "",
   },
