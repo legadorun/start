@@ -8,8 +8,8 @@ const appConfig = window.LEGADO_APP_CONFIG || {};
 const analyticsConfig = appConfig.analytics || {};
 
 const currentLot = {
-  priceSimple: "R$ 109,90 + taxas plataforma",
-  priceComplete: "R$ 139,90 + taxas plataforma",
+  priceSimple: "R$ 109,90",
+  priceComplete: "R$ 139,90",
 };
 
 function cleanTrackingQuery() {
