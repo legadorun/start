@@ -1164,3 +1164,644 @@ h3 {
   .hero-media { display: none; }
   .hero-fallback { z-index: 0; }
 }
+
+/* LEGADO RUN conversion redesign */
+:root {
+  --paper: #f7f8f1;
+  --surface: #ffffff;
+  --lime: #b7ef12;
+  --lime-deep: #91bf05;
+  --ink: #050704;
+  --graphite: #11140f;
+  --muted: #687064;
+  --line: rgba(5, 7, 4, 0.12);
+  --shadow: 0 24px 80px rgba(5, 7, 4, 0.18);
+}
+
+body { background: var(--paper); }
+
+.race-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(5, 7, 4, 0.82);
+}
+
+.brand-mark {
+  border: 0;
+  width: auto;
+  min-width: 2.35rem;
+  color: var(--lime);
+  font-size: 1.95rem;
+  transform: skew(-8deg);
+}
+
+.brand strong {
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+}
+
+.main-nav a {
+  position: relative;
+  padding-block: 0.4rem;
+}
+
+.main-nav a:not(.nav-app-link):not(.nav-join-link)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after { transform: scaleX(1); }
+
+.button,
+.header-cta,
+.header-app,
+.nav-app-link,
+.nav-join-link,
+.sticky-register {
+  border-radius: 0;
+  transition: transform 180ms ease, filter 180ms ease, background 180ms ease;
+}
+
+.button:hover,
+.header-cta:hover,
+.header-app:hover,
+.nav-app-link:hover,
+.nav-join-link:hover,
+.sticky-register:hover { transform: translateY(-1px); }
+
+.race-hero {
+  min-height: 100svh;
+  align-items: center;
+  isolation: isolate;
+}
+
+.race-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 28vh;
+  z-index: 1;
+  background: linear-gradient(0deg, var(--ink), rgba(5, 7, 4, 0));
+  pointer-events: none;
+}
+
+.race-hero .hero-fallback {
+  object-position: center center;
+  filter: saturate(1.04) contrast(1.05);
+}
+
+.race-hero .hero-scrim {
+  background:
+    linear-gradient(90deg, rgba(5, 7, 4, 0.96), rgba(5, 7, 4, 0.8) 40%, rgba(5, 7, 4, 0.22) 72%, rgba(5, 7, 4, 0.12)),
+    linear-gradient(0deg, rgba(5, 7, 4, 0.68), rgba(5, 7, 4, 0.04) 54%);
+}
+
+.race-hero-content {
+  width: min(980px, 100%);
+  padding-top: clamp(7rem, 12vh, 9rem);
+}
+
+.hero-meta {
+  margin-bottom: 0.75rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 2vw, 1.45rem);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.race-hero h1 {
+  max-width: 760px;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.race-hero .hero-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.hero-primary {
+  width: fit-content;
+  min-height: 3.55rem;
+  margin-top: 1.25rem;
+  padding-inline: 1.45rem;
+  font-size: 1rem;
+}
+
+.hero-note {
+  margin: 0.9rem 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.conversion-bar {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) auto;
+  gap: 1px;
+  background: rgba(183, 239, 18, 0.5);
+  color: white;
+}
+
+.conversion-bar span,
+.conversion-bar .button {
+  min-height: 6.4rem;
+  padding: 1.1rem;
+  background: var(--ink);
+}
+
+.conversion-bar strong {
+  display: block;
+  color: var(--lime);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(1.45rem, 2.2vw, 2.2rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.conversion-bar span {
+  color: rgba(255, 255, 255, 0.74);
+  font-weight: 800;
+}
+
+.conversion-bar .button {
+  min-width: 13rem;
+  color: var(--ink);
+  background: var(--lime);
+}
+
+.compact-heading {
+  max-width: 760px;
+  margin-bottom: 1.8rem;
+}
+
+.challenge-section,
+.premium-schedule,
+.faq-section { background: var(--surface); }
+
+.challenge-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.challenge-card {
+  min-height: 21rem;
+  display: grid;
+  align-content: space-between;
+  gap: 1rem;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  border: 1px solid var(--line);
+  background: #fdfef9;
+  box-shadow: 0 18px 60px rgba(5, 7, 4, 0.08);
+}
+
+.challenge-card.is-featured {
+  background: var(--ink);
+  color: white;
+}
+
+.challenge-card span {
+  color: var(--lime-deep);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(5rem, 12vw, 9rem);
+  line-height: 0.8;
+}
+
+.challenge-card strong {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.challenge-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.challenge-card.is-featured p { color: rgba(255, 255, 255, 0.74); }
+
+.challenge-card a {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.82rem 1rem;
+  background: var(--lime);
+  color: var(--ink);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.premium-kit-section,
+.medal-section,
+.proof-section,
+.premium-location {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.82fr);
+  gap: clamp(1.4rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.premium-kit-section {
+  background: var(--ink);
+  color: white;
+}
+
+.kit-showcase,
+.medal-visual,
+.location-photo {
+  margin: 0;
+  overflow: hidden;
+  background: #0d0f0c;
+  box-shadow: var(--shadow);
+}
+
+.kit-showcase img {
+  width: 100%;
+  max-height: 760px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.kit-copy p,
+.medal-copy p,
+.proof-copy p { color: rgba(255, 255, 255, 0.72); }
+
+.kit-subtitle {
+  color: rgba(255, 255, 255, 0.82) !important;
+  font-size: clamp(1.25rem, 2.2vw, 1.7rem);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.premium-pricing {
+  grid-template-columns: 1fr;
+  margin: 1.5rem 0;
+}
+
+.premium-kit-section .price-card {
+  background: rgba(255, 255, 255, 0.07);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.premium-kit-section .price-card.featured {
+  border-color: rgba(183, 239, 18, 0.8);
+  background: rgba(183, 239, 18, 0.11);
+}
+
+.price-card small {
+  display: block;
+  margin-top: 0.35rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 800;
+}
+
+.medal-section {
+  background: var(--graphite);
+  color: white;
+}
+
+.medal-visual img {
+  width: 100%;
+  max-height: 620px;
+  object-fit: cover;
+  object-position: 78% center;
+}
+
+.experience-section {
+  background: var(--paper);
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.trust-grid article {
+  min-height: 10rem;
+  display: grid;
+  align-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  background: white;
+  box-shadow: 0 12px 36px rgba(5, 7, 4, 0.06);
+}
+
+.trust-grid strong {
+  color: var(--ink);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.trust-grid span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.edition-section,
+.final-cta {
+  display: grid;
+  gap: 1rem;
+  justify-items: start;
+  padding: clamp(4rem, 9vw, 8rem) clamp(1rem, 6vw, 5rem);
+  background: var(--ink);
+  color: white;
+}
+
+.edition-section p,
+.final-cta p {
+  margin: 0;
+  color: var(--lime);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.82;
+}
+
+.edition-section h2,
+.final-cta h2 {
+  max-width: 980px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.edition-section span {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.proof-section {
+  background: var(--surface);
+}
+
+.proof-section .proof-video {
+  border-radius: 0;
+  box-shadow: var(--shadow);
+}
+
+.proof-section .proof-video video {
+  aspect-ratio: 16 / 9;
+  max-height: 420px;
+  object-fit: cover;
+}
+
+.proof-copy p { color: var(--muted); }
+
+.timeline {
+  align-items: stretch;
+}
+
+.timeline li {
+  border-radius: 0;
+  border-left: 4px solid var(--lime);
+}
+
+.premium-location .location-photo img {
+  width: 100%;
+  max-height: 760px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.logo-wall {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.sponsor-logo {
+  min-height: 11rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  background: #050704;
+}
+
+.sponsor-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.movement-section {
+  background: var(--paper);
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.faq-list details {
+  border: 1px solid var(--line);
+  background: white;
+  box-shadow: 0 10px 30px rgba(5, 7, 4, 0.05);
+}
+
+.faq-list summary {
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  color: var(--ink);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.faq-list summary::after {
+  content: "+";
+  color: var(--lime-deep);
+  font-size: 1.4rem;
+}
+
+.faq-list details[open] summary::after { content: "−"; }
+
+.faq-list p {
+  margin: 0;
+  padding: 0 1.1rem 1.1rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.final-cta {
+  align-items: start;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 4, 0.94), rgba(5, 7, 4, 0.66)),
+    url("assets/hero-legado-run-20260905.png") center/cover;
+}
+
+.sticky-register {
+  text-decoration: none;
+}
+
+@media (min-width: 1001px) {
+  .nav-join-link {
+    display: none;
+  }
+}
+
+@media (max-width: 1120px) {
+  .main-nav {
+    gap: 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  .header-app {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .race-header .main-nav {
+    display: none;
+  }
+
+  .race-header .main-nav.is-open {
+    display: grid;
+  }
+
+  .race-header .main-nav .nav-app-link,
+  .race-header .main-nav .nav-join-link {
+    display: flex;
+    width: 100%;
+  }
+
+  .race-header .header-actions {
+    display: none;
+  }
+
+  .race-hero {
+    min-height: 96svh;
+  }
+
+  .race-hero .hero-scrim {
+    background:
+      linear-gradient(180deg, rgba(5, 7, 4, 0.28), rgba(5, 7, 4, 0.86) 46%, rgba(5, 7, 4, 0.96)),
+      linear-gradient(90deg, rgba(5, 7, 4, 0.82), rgba(5, 7, 4, 0.22));
+  }
+
+  .race-hero .hero-fallback {
+    object-position: center top;
+  }
+
+  .conversion-bar,
+  .challenge-grid,
+  .trust-grid,
+  .premium-kit-section,
+  .medal-section,
+  .proof-section,
+  .premium-location,
+  .logo-wall {
+    grid-template-columns: 1fr;
+  }
+
+  .conversion-bar {
+    gap: 0;
+    background: var(--ink);
+  }
+
+  .conversion-bar span,
+  .conversion-bar .button {
+    min-height: auto;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .conversion-bar .button {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .challenge-card {
+    min-height: 15rem;
+  }
+
+  .premium-kit-section,
+  .medal-section,
+  .proof-section,
+  .premium-location {
+    gap: 2rem;
+  }
+
+  .premium-kit-section .kit-showcase {
+    order: 2;
+  }
+
+  .medal-visual img {
+    max-height: 420px;
+  }
+
+  .trust-grid {
+    gap: 0.65rem;
+  }
+
+  .trust-grid article {
+    min-height: auto;
+  }
+
+  .sponsor-logo {
+    aspect-ratio: 16 / 9;
+    min-height: 9rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .race-hero-content {
+    padding: 6rem 1rem 3rem;
+  }
+
+  .race-hero h1 {
+    max-width: 10ch;
+    font-size: clamp(3.05rem, 16vw, 4.8rem);
+  }
+
+  .hero-meta,
+  .race-hero .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-primary {
+    width: 100%;
+  }
+
+  .hero-note {
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .challenge-card span {
+    font-size: clamp(4.2rem, 24vw, 6.6rem);
+  }
+
+  .kit-showcase img {
+    max-height: none;
+    aspect-ratio: 4 / 5;
+    object-position: center top;
+  }
+
+  .proof-section .proof-video video {
+    aspect-ratio: 4 / 5;
+  }
+
+  .premium-location .location-photo img {
+    max-height: 520px;
+  }
+
+  .edition-section,
+  .final-cta {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+}

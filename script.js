@@ -17,16 +17,16 @@ function cleanTrackingQuery() {
   window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.hash}`);
 }
 
-function trackEvent(name) {
+function trackEvent(name, details = {}) {
   window.dataLayer = window.dataLayer || [];
   const device = window.matchMedia("(max-width: 680px)").matches ? "mobile" : "desktop";
-  const payload = { event: name, device };
+  const payload = { event: name, device, ...details };
   window.dataLayer.push(payload);
   if (typeof window.gtag === "function") {
-    window.gtag("event", name, { device_category: device });
+    window.gtag("event", name, { device_category: device, ...details });
   }
   if (typeof window.fbq === "function") {
-    window.fbq("trackCustom", name, { device });
+    window.fbq("trackCustom", name, { device, ...details });
   }
   if (name === "click_acessar_app" || name === "click_qr_code" || name === "click_baixar_android") {
     const deviceEvent = `tentativa_acesso_app_${device}`;
@@ -182,5 +182,29 @@ window.addEventListener("resize", () => {
 });
 
 document.querySelectorAll("[data-track]").forEach((element) => {
-  element.addEventListener("click", () => trackEvent(element.dataset.track));
+  element.addEventListener("click", () => {
+    const details = {};
+    if (element.closest("[data-distance]")) {
+      details.distance = element.closest("[data-distance]").dataset.distance;
+    }
+    element.dataset.track
+      .split(/[\s,]+/)
+      .filter(Boolean)
+      .forEach((eventName) => trackEvent(eventName, details));
+  });
 });
+
+const viewTrackedSections = document.querySelectorAll("[data-view-track]");
+if ("IntersectionObserver" in window && viewTrackedSections.length) {
+  const viewObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      trackEvent(entry.target.dataset.viewTrack);
+      viewObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.35 });
+
+  viewTrackedSections.forEach((section) => viewObserver.observe(section));
+} else {
+  viewTrackedSections.forEach((section) => trackEvent(section.dataset.viewTrack));
+}
