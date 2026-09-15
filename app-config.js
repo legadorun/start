@@ -6,7 +6,7 @@ window.LEGADO_APP_CONFIG = {
   analytics: {
     googleMeasurementId: "G-DVMY2JNDRM",
     googleTagManagerId: "",
-    metaPixelId: "",
+    metaPixelId: "2488576278298019",
   },
 };
 
