@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://legadorun.com.br/sitemap.xml
