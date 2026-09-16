@@ -6,28 +6,158 @@ const menuToggle = document.querySelector("[data-menu-toggle]");
 const mainNav = document.querySelector("[data-main-nav]");
 const appConfig = window.LEGADO_APP_CONFIG || {};
 const analyticsConfig = appConfig.analytics || {};
+const campaignConfig = appConfig.campaign || {};
+const attributionKeys = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+  "fbclid",
+  "gclid",
+];
+const attributionStorageKey = "legado_run_attribution";
+const scrollMilestones = [25, 50, 75, 90];
+const trackedScrollMilestones = new Set();
 
 const currentLot = {
   priceSimple: "R$ 109,90",
   priceComplete: "R$ 139,90",
 };
 
+function getDeviceCategory() {
+  if (window.matchMedia("(max-width: 680px)").matches) return "mobile";
+  if (window.matchMedia("(max-width: 1024px)").matches) return "tablet";
+  return "desktop";
+}
+
+function getStoredAttribution() {
+  try {
+    return JSON.parse(window.sessionStorage.getItem(attributionStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function storeAttribution() {
+  const params = new URLSearchParams(window.location.search);
+  const incoming = {};
+
+  attributionKeys.forEach((key) => {
+    const value = params.get(key);
+    if (value) incoming[key] = value;
+  });
+
+  if (!Object.keys(incoming).length) return getStoredAttribution();
+
+  const attribution = {
+    ...getStoredAttribution(),
+    ...incoming,
+    landing_page: window.location.pathname,
+    captured_at: new Date().toISOString(),
+  };
+
+  try {
+    window.sessionStorage.setItem(attributionStorageKey, JSON.stringify(attribution));
+  } catch {
+    return attribution;
+  }
+
+  return attribution;
+}
+
 function cleanTrackingQuery() {
   if (!window.location.search) return;
-  window.history.replaceState({}, document.title, `${window.location.pathname}${window.location.hash}`);
+
+  const params = new URLSearchParams(window.location.search);
+  const remaining = new URLSearchParams(params);
+  attributionKeys.forEach((key) => remaining.delete(key));
+
+  const nextSearch = remaining.toString();
+  const nextUrl = `${window.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${window.location.hash}`;
+  window.history.replaceState({}, document.title, nextUrl);
+}
+
+function getCampaignParams(element) {
+  const attribution = getStoredAttribution();
+  return {
+    utm_source: attribution.utm_source || campaignConfig.source || "site",
+    utm_medium: attribution.utm_medium || campaignConfig.medium || "organic",
+    utm_campaign: attribution.utm_campaign || campaignConfig.campaign || "legado_run_2026",
+    utm_content: attribution.utm_content || element?.dataset.utmContent || campaignConfig.content || "site_cta",
+    ...(attribution.utm_term ? { utm_term: attribution.utm_term } : {}),
+    ...(attribution.fbclid ? { fbclid: attribution.fbclid } : {}),
+    ...(attribution.gclid ? { gclid: attribution.gclid } : {}),
+  };
+}
+
+function appendCampaignParams(url, element) {
+  try {
+    const nextUrl = new URL(url, window.location.href);
+    const params = getCampaignParams(element);
+    Object.entries(params).forEach(([key, value]) => {
+      if (value && !nextUrl.searchParams.has(key)) nextUrl.searchParams.set(key, value);
+    });
+    return nextUrl.toString();
+  } catch {
+    return url;
+  }
+}
+
+function decorateOutboundLinks() {
+  const trackedHosts = [
+    "site.ticketsports.com.br",
+    "www.ticketsports.com.br",
+    "legado-run.vercel.app",
+    "legadorun.github.io",
+    "play.google.com",
+  ];
+
+  document.querySelectorAll("a[href]").forEach((link) => {
+    try {
+      const url = new URL(link.href, window.location.href);
+      if (!trackedHosts.includes(url.hostname)) return;
+      link.href = appendCampaignParams(url.toString(), link);
+    } catch {
+      // Keep the original link if URL parsing fails.
+    }
+  });
+}
+
+function getLinkContext(element) {
+  const href = element?.getAttribute("href") || "";
+  const url = href ? new URL(href, window.location.href) : null;
+  const label = (element?.textContent || element?.getAttribute("aria-label") || "").trim().slice(0, 80);
+  const section = element?.closest("section, header, footer")?.id || element?.closest("section, header, footer")?.className || "page";
+  const details = {
+    link_text: label,
+    link_url: url ? url.toString() : href,
+    link_domain: url ? url.hostname : "",
+    page_path: window.location.pathname,
+    section: String(section).slice(0, 80),
+  };
+
+  if (element?.closest("[data-distance]")) {
+    details.distance = element.closest("[data-distance]").dataset.distance;
+  }
+
+  return details;
 }
 
 function trackEvent(name, details = {}) {
   window.dataLayer = window.dataLayer || [];
-  const device = window.matchMedia("(max-width: 680px)").matches ? "mobile" : "desktop";
-  const payload = { event: name, device, ...details };
+  const device = getDeviceCategory();
+  const payload = { event: name, device_category: device, ...details };
   window.dataLayer.push(payload);
+
   if (typeof window.gtag === "function") {
     window.gtag("event", name, { device_category: device, ...details });
   }
+
   if (typeof window.fbq === "function") {
-    window.fbq("trackCustom", name, { device, ...details });
+    window.fbq("trackCustom", name, { device_category: device, ...details });
   }
+
   if (name === "click_acessar_app" || name === "click_qr_code" || name === "click_baixar_android") {
     const deviceEvent = `tentativa_acesso_app_${device}`;
     window.dataLayer.push({ event: deviceEvent });
@@ -37,6 +167,33 @@ function trackEvent(name, details = {}) {
     if (typeof window.fbq === "function") {
       window.fbq("trackCustom", deviceEvent);
     }
+  }
+}
+
+function trackMetaStandardEvent(name, details = {}) {
+  if (typeof window.fbq !== "function") return;
+  window.fbq("track", name, details);
+}
+
+function trackConversionIntent(eventNames, details) {
+  const events = new Set(eventNames);
+
+  if (events.has("begin_checkout") || events.has("click_registration")) {
+    trackMetaStandardEvent("InitiateCheckout", {
+      content_name: "Inscricao LEGADO RUN",
+      content_category: "Evento esportivo",
+      currency: "BRL",
+      value: 109.9,
+      ...details,
+    });
+  }
+
+  if (events.has("click_patrocinador")) {
+    trackMetaStandardEvent("Lead", {
+      content_name: "Patrocinio LEGADO RUN",
+      content_category: "Patrocinadores",
+      ...details,
+    });
   }
 }
 
@@ -103,6 +260,20 @@ function applyAppLinks() {
   });
 }
 
+function applyConfiguredLinks() {
+  document.querySelectorAll("a[href*='ticketsports.com.br']").forEach((link) => {
+    if (appConfig.registrationUrl) link.href = appConfig.registrationUrl;
+    if (!link.dataset.track) link.dataset.track = "click_registration begin_checkout";
+    if (!link.dataset.utmContent) link.dataset.utmContent = "inscricao";
+  });
+
+  document.querySelectorAll("a[href*='legadorun.github.io/patrocinadores']").forEach((link) => {
+    if (appConfig.sponsorUrl) link.href = appConfig.sponsorUrl;
+    if (!link.dataset.track) link.dataset.track = "click_patrocinador";
+    if (!link.dataset.utmContent) link.dataset.utmContent = "patrocinadores";
+  });
+}
+
 function updatePricing() {
   const simple = document.querySelector("[data-price-simple]");
   const complete = document.querySelector("[data-price-complete]");
@@ -155,8 +326,11 @@ function toggleMenu() {
 }
 
 initAnalytics();
+storeAttribution();
 cleanTrackingQuery();
 applyAppLinks();
+applyConfiguredLinks();
+decorateOutboundLinks();
 updatePricing();
 updateCountdown();
 setInterval(updateCountdown, 1000);
@@ -183,16 +357,50 @@ window.addEventListener("resize", () => {
 
 document.querySelectorAll("[data-track]").forEach((element) => {
   element.addEventListener("click", () => {
-    const details = {};
-    if (element.closest("[data-distance]")) {
-      details.distance = element.closest("[data-distance]").dataset.distance;
-    }
-    element.dataset.track
+    const details = getLinkContext(element);
+    const eventNames = element.dataset.track
       .split(/[\s,]+/)
-      .filter(Boolean)
-      .forEach((eventName) => trackEvent(eventName, details));
+      .filter(Boolean);
+
+    eventNames.forEach((eventName) => trackEvent(eventName, details));
+    trackConversionIntent(eventNames, details);
   });
 });
+
+document.querySelectorAll("a[href]").forEach((element) => {
+  element.addEventListener("click", () => {
+    const details = getLinkContext(element);
+    if (!details.link_domain) return;
+    if (details.link_domain !== window.location.hostname) {
+      trackEvent("click_outbound_link", details);
+    }
+  });
+});
+
+document.querySelectorAll(".faq-list details").forEach((item) => {
+  item.addEventListener("toggle", () => {
+    if (!item.open) return;
+    trackEvent("open_faq", {
+      question: (item.querySelector("summary")?.textContent || "").trim(),
+      page_path: window.location.pathname,
+    });
+  });
+});
+
+window.addEventListener("scroll", () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  if (scrollable <= 0) return;
+
+  const percent = Math.round((window.scrollY / scrollable) * 100);
+  scrollMilestones.forEach((milestone) => {
+    if (percent < milestone || trackedScrollMilestones.has(milestone)) return;
+    trackedScrollMilestones.add(milestone);
+    trackEvent("scroll_depth", {
+      percent_scrolled: milestone,
+      page_path: window.location.pathname,
+    });
+  });
+}, { passive: true });
 
 const viewTrackedSections = document.querySelectorAll("[data-view-track]");
 if ("IntersectionObserver" in window && viewTrackedSections.length) {
