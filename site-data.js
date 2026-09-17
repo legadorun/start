@@ -30,6 +30,15 @@ window.LEGADO_SITE_DATA = {
       ["12h00", "Encerramento"],
     ],
   },
+  nextTraining: {
+    status: "Agenda aberta",
+    title: "Próximo treino LEGADO RUN",
+    date: "Data divulgada nos canais oficiais",
+    time: "Horário confirmado na convocação",
+    location: "Belo Horizonte - MG",
+    level: "Todos os níveis",
+    distance: "Caminhada e corrida",
+  },
   app: {
     web: "https://legado-run.vercel.app/",
     android: "https://play.google.com/apps/internaltest/4701310693878336021",
@@ -47,4 +56,11 @@ window.LEGADO_SITE_DATA = {
     legalName: "YOAV SOLUCOES E SERVICOS LTDA",
     cnpj: "60.502.538/0001-26",
   },
+  trust: [
+    "Inscrição oficial via Ticket Sports",
+    "Organização YOAV",
+    "Cronometragem eletrônica",
+    "Atendimento médico",
+    "Pontos de hidratação",
+  ],
 };

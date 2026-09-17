@@ -17,7 +17,7 @@ const attributionKeys = [
   "gclid",
 ];
 const attributionStorageKey = "legado_run_attribution";
-const scrollMilestones = [25, 50, 75, 90];
+const scrollMilestones = [25, 50, 75, 100];
 const trackedScrollMilestones = new Set();
 
 const currentLot = {
@@ -205,14 +205,33 @@ function loadExternalScript(src, onload) {
   document.head.appendChild(script);
 }
 
+function scheduleTrackingScripts(sources) {
+  let loaded = false;
+  const load = () => {
+    if (loaded) return;
+    loaded = true;
+    sources.forEach((src) => loadExternalScript(src));
+  };
+  const schedule = () => {
+    if ("requestIdleCallback" in window) window.requestIdleCallback(load, { timeout: 2500 });
+    else window.setTimeout(load, 1200);
+  };
+
+  if (document.readyState === "complete") schedule();
+  else window.addEventListener("load", schedule, { once: true });
+  window.addEventListener("pointerdown", load, { once: true, passive: true });
+  window.addEventListener("keydown", load, { once: true });
+}
+
 function initAnalytics() {
   const { googleMeasurementId, googleTagManagerId, metaPixelId } = analyticsConfig;
+  const trackingSources = [];
 
   window.dataLayer = window.dataLayer || [];
 
   if (googleTagManagerId) {
     window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
-    loadExternalScript(`https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(googleTagManagerId)}`);
+    trackingSources.push(`https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(googleTagManagerId)}`);
   }
 
   if (googleMeasurementId) {
@@ -221,7 +240,7 @@ function initAnalytics() {
     };
     window.gtag("js", new Date());
     window.gtag("config", googleMeasurementId, { send_page_view: true });
-    loadExternalScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleMeasurementId)}`);
+    trackingSources.push(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleMeasurementId)}`);
   }
 
   if (metaPixelId) {
@@ -233,8 +252,10 @@ function initAnalytics() {
     window.fbq.version = "2.0";
     window.fbq("init", metaPixelId);
     window.fbq("track", "PageView");
-    loadExternalScript("https://connect.facebook.net/en_US/fbevents.js");
+    trackingSources.push("https://connect.facebook.net/en_US/fbevents.js");
   }
+
+  if (trackingSources.length) scheduleTrackingScripts([...new Set(trackingSources)]);
 }
 
 function applyAppLinks() {
@@ -453,6 +474,35 @@ if ("IntersectionObserver" in window) {
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
+
+document.querySelectorAll("[data-track-video]").forEach((video) => {
+  let hasTrackedPlay = false;
+  video.addEventListener("play", () => {
+    if (hasTrackedPlay) return;
+    hasTrackedPlay = true;
+    trackEvent("view_video", {
+      video_src: video.currentSrc || video.querySelector("source")?.src || "",
+      page_path: window.location.pathname,
+    });
+  });
+});
+
+const kitDetail = document.querySelector("[data-kit-detail]");
+document.querySelectorAll("[data-kit-item]").forEach((button) => {
+  button.setAttribute("aria-pressed", String(button.classList.contains("is-active")));
+  button.addEventListener("click", () => {
+    document.querySelectorAll("[data-kit-item]").forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-pressed", String(isActive));
+    });
+    if (kitDetail) kitDetail.textContent = button.dataset.kitItem;
+    trackEvent("explore_kit_item", {
+      item_name: button.textContent.trim(),
+      page_path: window.location.pathname,
+    });
+  });
+});
 
 const galleryFilters = document.querySelectorAll("[data-gallery-filter]");
 const galleryItems = document.querySelectorAll("[data-gallery-item]");
