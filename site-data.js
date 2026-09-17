@@ -8,7 +8,7 @@ window.LEGADO_SITE_DATA = {
     gallery: "https://photos.app.goo.gl/bmxkfRYdnv81bCmJ9",
   },
   event: {
-    name: "1a Corrida LEGADO RUN",
+    name: "1ª Corrida LEGADO RUN",
     date: "2026-11-01T07:00:00-03:00",
     dateLabel: "01.NOV.2026",
     city: "Belo Horizonte - MG",
