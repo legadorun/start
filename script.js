@@ -416,3 +416,80 @@ if ("IntersectionObserver" in window && viewTrackedSections.length) {
 } else {
   viewTrackedSections.forEach((section) => trackEvent(section.dataset.viewTrack));
 }
+
+const siteHeader = document.querySelector(".site-header");
+function updateHeader() {
+  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 24);
+}
+updateHeader();
+window.addEventListener("scroll", updateHeader, { passive: true });
+
+const heroVideo = document.querySelector("[data-hero-video]");
+if (heroVideo && window.matchMedia("(min-width: 768px)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const loadHeroVideo = () => {
+    const source = heroVideo.querySelector("source[data-src]");
+    if (!source) return;
+    source.src = source.dataset.src;
+    source.removeAttribute("data-src");
+    heroVideo.load();
+    heroVideo.play().catch(() => {});
+  };
+  window.addEventListener("load", () => {
+    if ("requestIdleCallback" in window) window.requestIdleCallback(loadHeroVideo, { timeout: 1600 });
+    else window.setTimeout(loadHeroVideo, 500);
+  }, { once: true });
+}
+
+const revealItems = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
+const galleryFilters = document.querySelectorAll("[data-gallery-filter]");
+const galleryItems = document.querySelectorAll("[data-gallery-item]");
+galleryFilters.forEach((filter) => {
+  filter.addEventListener("click", () => {
+    const selected = filter.dataset.galleryFilter;
+    galleryFilters.forEach((item) => item.classList.toggle("is-active", item === filter));
+    galleryItems.forEach((item) => {
+      item.hidden = selected !== "todos" && item.dataset.galleryItem !== selected;
+    });
+  });
+});
+
+const lightbox = document.querySelector("[data-lightbox]");
+const lightboxImage = lightbox?.querySelector("img");
+document.querySelectorAll("[data-lightbox-source]").forEach((item) => {
+  item.addEventListener("click", () => {
+    if (!lightbox || !lightboxImage) return;
+    const image = item.querySelector("img");
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt;
+    lightbox.hidden = false;
+    lightbox.querySelector("button")?.focus();
+  });
+});
+lightbox?.querySelector("[data-lightbox-close]")?.addEventListener("click", () => {
+  lightbox.hidden = true;
+  lightboxImage.removeAttribute("src");
+});
+lightbox?.addEventListener("click", (event) => {
+  if (event.target !== lightbox) return;
+  lightbox.hidden = true;
+  lightboxImage.removeAttribute("src");
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && lightbox && !lightbox.hidden) {
+    lightbox.hidden = true;
+    lightboxImage.removeAttribute("src");
+  }
+});
