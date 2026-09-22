@@ -4,6 +4,13 @@ window.LEGADO_APP_CONFIG = {
   appStoreUrl: "",
   appStoreLabel: "Em breve na App Store",
   registrationUrl: "https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR",
+  ticketEventUrl: "https://www.ticketsports.com.br/e/LEGADO%20RUN-87806",
+  pricing: {
+    simple: "R$ 109,90",
+    complete: "R$ 139,90",
+    simpleValue: 109.9,
+    completeValue: 139.9,
+  },
   sponsorUrl: "https://legadorun.github.io/patrocinadores/",
   campaign: {
     source: "site",

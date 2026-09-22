@@ -244,11 +244,22 @@ h3 { margin-bottom: .65rem; font-size: clamp(1.6rem, 2.7vw, 2.3rem); line-height
 
 .event-hero { position: relative; min-height: 88svh; display: grid; align-items: end; overflow: hidden; background: #080a08; }
 .event-hero-line { margin-bottom: 1.6rem; color: #fff !important; font-size: clamp(1.15rem, 2vw, 1.5rem) !important; }
+.checkout-note { max-width: 520px; margin: .8rem 0 0; color: #d7dbd3 !important; font-size: .72rem !important; font-weight: 700; letter-spacing: 0; }
 .event-facts { background: var(--color-primary); color: #080a08; }
 .event-facts-grid { display: grid; grid-template-columns: 1fr 1.5fr 1fr .7fr; }
 .event-facts-grid div { min-height: 130px; display: flex; flex-direction: column; justify-content: center; padding: 1.2rem; border-right: 1px solid rgba(0,0,0,.2); }
 .event-facts-grid span { font-size: .65rem; font-weight: 900; text-transform: uppercase; }
 .event-facts-grid strong { margin-top: .45rem; font-size: .92rem; }
+.registration-path { padding-block: clamp(3rem, 7vw, 6rem); background: #111411; }
+.registration-path-grid { display: grid; grid-template-columns: .75fr 1.25fr; align-items: center; gap: clamp(2rem, 7vw, 7rem); }
+.registration-path-grid h2 { margin-bottom: 1rem; }
+.registration-path-grid > div > p:last-child { max-width: 520px; color: var(--color-muted); }
+.registration-path ol { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 0; border: 1px solid #343934; list-style: none; }
+.registration-path li { min-height: 170px; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.2rem; border-right: 1px solid #343934; }
+.registration-path li:last-child { border-right: 0; }
+.registration-path li span { margin-bottom: auto; color: var(--color-primary); font: 2rem/1 "Bebas Neue"; }
+.registration-path li strong { font-size: .82rem; text-transform: uppercase; }
+.registration-path li small { margin-top: .35rem; color: var(--color-muted); font-size: .68rem; }
 .route-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #cfd2ca; }
 .route-grid article { min-height: 390px; display: flex; flex-direction: column; padding: 1.5rem; background: var(--color-paper); }
 .route-grid article > span { color: #688900; font-size: .7rem; font-weight: 900; }
@@ -284,6 +295,7 @@ h3 { margin-bottom: .65rem; font-size: clamp(1.6rem, 2.7vw, 2.3rem); line-height
 .faq-list details p { color: var(--color-muted); }
 .final-registration { display: grid; place-items: center; min-height: 480px; padding: 2rem; background: var(--color-primary); color: #080a08; text-align: center; }
 .final-registration h2 { margin-bottom: 2rem; }
+.final-registration small { display: block; margin-top: 1rem; font-size: .7rem; font-weight: 800; }
 
 @media (max-width: 1080px) {
   .main-nav { gap: .65rem; }
@@ -309,7 +321,7 @@ h3 { margin-bottom: .65rem; font-size: clamp(1.6rem, 2.7vw, 2.3rem); line-height
   .partner-track { grid-template-columns: repeat(2, 1fr); }
   .site-footer { grid-template-columns: 1fr 1fr; }
   .video-invite-layout { grid-template-columns: 1fr; }
-  .brand-manifesto-grid, .training-layout, .event-list-card, .kit-explorer-grid, .medal-story-grid, .schedule-location, .faq-layout { grid-template-columns: 1fr; }
+  .brand-manifesto-grid, .training-layout, .event-list-card, .kit-explorer-grid, .medal-story-grid, .schedule-location, .faq-layout, .registration-path-grid { grid-template-columns: 1fr; }
   .movement-heading { grid-template-columns: 1fr; }
   .movement-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 380px 260px 300px; }
   .movement-photo-main { grid-column: 1 / 3; grid-row: auto; }
@@ -369,6 +381,9 @@ h3 { margin-bottom: .65rem; font-size: clamp(1.6rem, 2.7vw, 2.3rem); line-height
   .event-list-card figure { min-height: 390px; }
   .event-facts-grid { grid-template-columns: 1fr 1fr; }
   .event-facts-grid div { min-height: 110px; }
+  .registration-path ol { grid-template-columns: 1fr; }
+  .registration-path li { min-height: 118px; border-right: 0; border-bottom: 1px solid #343934; }
+  .registration-path li:last-child { border-bottom: 0; }
   .kit-tabs { display: grid; grid-template-columns: 1fr 1fr; }
   .price-row { grid-template-columns: 1fr; }
   .medal-story figure { height: 460px; }

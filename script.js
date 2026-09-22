@@ -21,8 +21,8 @@ const scrollMilestones = [25, 50, 75, 100];
 const trackedScrollMilestones = new Set();
 
 const currentLot = {
-  priceSimple: "R$ 109,90",
-  priceComplete: "R$ 139,90",
+  priceSimple: appConfig.pricing?.simple || "R$ 109,90",
+  priceComplete: appConfig.pricing?.complete || "R$ 139,90",
 };
 
 function getDeviceCategory() {
@@ -183,7 +183,7 @@ function trackConversionIntent(eventNames, details) {
       content_name: "Inscricao LEGADO RUN",
       content_category: "Evento esportivo",
       currency: "BRL",
-      value: 109.9,
+      value: appConfig.pricing?.simpleValue || 109.9,
       ...details,
     });
   }
@@ -192,6 +192,14 @@ function trackConversionIntent(eventNames, details) {
     trackMetaStandardEvent("Lead", {
       content_name: "Patrocinio LEGADO RUN",
       content_category: "Patrocinadores",
+      ...details,
+    });
+  }
+
+  if (events.has("click_whatsapp_group")) {
+    trackMetaStandardEvent("Contact", {
+      content_name: "Grupo oficial LEGADO RUN",
+      content_category: "Comunidade",
       ...details,
     });
   }
@@ -282,10 +290,14 @@ function applyAppLinks() {
 }
 
 function applyConfiguredLinks() {
-  document.querySelectorAll("a[href*='ticketsports.com.br']").forEach((link) => {
+  document.querySelectorAll("a[href*='site.ticketsports.com.br/Inscricao/'], a[data-track~='click_registration']").forEach((link) => {
     if (appConfig.registrationUrl) link.href = appConfig.registrationUrl;
     if (!link.dataset.track) link.dataset.track = "click_registration begin_checkout";
     if (!link.dataset.utmContent) link.dataset.utmContent = "inscricao";
+  });
+
+  document.querySelectorAll("a[href*='www.ticketsports.com.br/e/']").forEach((link) => {
+    if (appConfig.ticketEventUrl) link.href = appConfig.ticketEventUrl;
   });
 
   document.querySelectorAll("a[href*='legadorun.github.io/patrocinadores']").forEach((link) => {
@@ -428,14 +440,38 @@ if ("IntersectionObserver" in window && viewTrackedSections.length) {
   const viewObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;
-      trackEvent(entry.target.dataset.viewTrack);
+      const viewEvent = entry.target.dataset.viewTrack;
+      trackEvent(viewEvent);
+      if (viewEvent === "view_event") {
+        trackMetaStandardEvent("ViewContent", {
+          content_name: "1ª Corrida LEGADO RUN",
+          content_category: "Evento esportivo",
+          content_ids: ["legado-run-2026"],
+          content_type: "product",
+          currency: "BRL",
+          value: appConfig.pricing?.simpleValue || 109.9,
+        });
+      }
       viewObserver.unobserve(entry.target);
     });
   }, { threshold: 0.35 });
 
   viewTrackedSections.forEach((section) => viewObserver.observe(section));
 } else {
-  viewTrackedSections.forEach((section) => trackEvent(section.dataset.viewTrack));
+  viewTrackedSections.forEach((section) => {
+    const viewEvent = section.dataset.viewTrack;
+    trackEvent(viewEvent);
+    if (viewEvent === "view_event") {
+      trackMetaStandardEvent("ViewContent", {
+        content_name: "1ª Corrida LEGADO RUN",
+        content_category: "Evento esportivo",
+        content_ids: ["legado-run-2026"],
+        content_type: "product",
+        currency: "BRL",
+        value: appConfig.pricing?.simpleValue || 109.9,
+      });
+    }
+  });
 }
 
 const siteHeader = document.querySelector(".site-header");
