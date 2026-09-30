@@ -4,7 +4,7 @@ window.LEGADO_SITE_DATA = {
     pillars: ["Saude", "Comunidade", "Proposito", "Legado"],
     instagram: "https://instagram.com/legadorun",
     email: "legadorunn@gmail.com",
-    whatsapp: "https://chat.whatsapp.com/IEJSDWF9a0ZLIFcD13W5qf",
+    whatsapp: "/grupo/",
     gallery: "https://photos.app.goo.gl/bmxkfRYdnv81bCmJ9",
   },
   event: {
@@ -18,7 +18,7 @@ window.LEGADO_SITE_DATA = {
     registration: "https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR",
     map: "https://www.google.com/maps/search/?api=1&query=Boulevard%20Shopping%20Avenida%20dos%20Andradas%203345%20Belo%20Horizonte%20MG",
     waze: "https://waze.com/ul?q=Boulevard%20Shopping%20Avenida%20dos%20Andradas%203345%20Belo%20Horizonte%20MG&navigate=yes",
-    prices: { simple: "R$ 109,90", complete: "R$ 139,90" },
+    prices: { simple: "R$ 89,90", complete: "R$ 109,90" },
     schedule: [
       ["07h00", "Inicio do evento"],
       ["07h30", "Abertura do evento"],

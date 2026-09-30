@@ -21,8 +21,8 @@ const scrollMilestones = [25, 50, 75, 100];
 const trackedScrollMilestones = new Set();
 
 const currentLot = {
-  priceSimple: appConfig.pricing?.simple || "R$ 109,90",
-  priceComplete: appConfig.pricing?.complete || "R$ 139,90",
+  priceSimple: appConfig.pricing?.simple || "R$ 89,90",
+  priceComplete: appConfig.pricing?.complete || "R$ 109,90",
 };
 
 function getDeviceCategory() {
