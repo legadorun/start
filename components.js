@@ -28,7 +28,7 @@
     footer.innerHTML = `
       <div class="footer-lead"><a class="brand footer-brand" href="/"><span class="brand-mark">LR</span><span>LEGADO RUN</span></a><p>Esporte, saúde, comunidade e propósito. Um movimento construído por pessoas.</p><span>YOAV SOLUÇÕES E SERVIÇOS LTDA<br>CNPJ 60.502.538/0001-26</span></div>
       <div><strong>Movimento</strong><a href="/movimento/">Sobre</a><a href="/treinos/">Treinos</a><a href="/comunidade/">Comunidade</a><a href="/galeria/">Galeria</a></div>
-      <div><strong>Eventos</strong><a href="/eventos/legado-run-2026/">1ª Corrida</a><a href="/eventos/legado-run-2026/#percursos">Percursos</a><a href="/eventos/legado-run-2026/#programacao">Programação</a><a href="/regulamento/">Regulamento</a></div>
+      <div><strong>Eventos</strong><a href="/eventos/legado-run-2026/">Treinão LEGADO RUN</a><a href="/eventos/legado-run-2026/#percursos">Percursos</a><a href="/eventos/legado-run-2026/#programacao">Programação</a><a href="/regulamento/">Regulamento</a></div>
       <div><strong>Conecte-se</strong><a href="https://instagram.com/legadorun" target="_blank" rel="noopener noreferrer" data-track="click_instagram">Instagram</a><a href="https://legado-run.vercel.app/" target="_blank" rel="noopener noreferrer" data-track="click_app">Aplicativo</a><a href="/contato/">Contato</a><a href="/parceiros/">Parceiros</a><a href="/privacidade/">Privacidade</a><a href="/termos/">Termos</a></div>
       <p class="footer-bottom">© 2026 LEGADO RUN. Todos os direitos reservados.</p>`;
   }
