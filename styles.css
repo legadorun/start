@@ -696,6 +696,9 @@ body:not([data-page="home"]) .site-header {
 body[data-page="home"] .brand-hero {
   min-height: 82svh;
   align-items: center;
+  background:
+    radial-gradient(circle at 81% 36%, rgba(200, 255, 25, .18), transparent 24rem),
+    linear-gradient(118deg, #030504 0%, #090d09 56%, #151d0d 100%);
 }
 
 body[data-page="home"] .brand-hero::before {
@@ -706,10 +709,23 @@ body[data-page="home"] .brand-hero::before {
   opacity: .6;
 }
 
+body[data-page="home"] .brand-hero-image {
+  inset: auto -2vw 0 auto;
+  z-index: 1;
+  width: min(76vw, 1320px);
+  height: auto;
+  max-height: 86%;
+  object-fit: contain;
+  object-position: right bottom;
+  filter: drop-shadow(0 28px 48px rgba(0, 0, 0, .48));
+  transform: none;
+}
+
 body[data-page="home"] .brand-hero-shade {
+  z-index: 1;
   background:
-    linear-gradient(90deg, rgba(3, 5, 4, .97) 0%, rgba(3, 5, 4, .82) 43%, rgba(3, 5, 4, .27) 77%, rgba(3, 5, 4, .2) 100%),
-    linear-gradient(0deg, rgba(3, 5, 4, .62), transparent 46%);
+    linear-gradient(90deg, rgba(3, 5, 4, .98) 0%, rgba(3, 5, 4, .9) 38%, rgba(3, 5, 4, .28) 68%, rgba(3, 5, 4, .06) 100%),
+    linear-gradient(0deg, rgba(3, 5, 4, .7), transparent 48%);
 }
 
 body[data-page="home"] .brand-hero-content {
@@ -858,6 +874,18 @@ body[data-page="home"] .brand-manifesto { padding-block: clamp(4rem, 7vw, 7rem);
 
 @media (max-width: 640px) {
   body[data-page="home"] .brand-hero { min-height: 88svh; }
+  body[data-page="home"] .brand-hero-image {
+    right: -41%;
+    bottom: 1.5rem;
+    width: 142%;
+    max-height: 61%;
+    opacity: .62;
+  }
+  body[data-page="home"] .brand-hero-shade {
+    background:
+      linear-gradient(90deg, rgba(3, 5, 4, .98) 0%, rgba(3, 5, 4, .77) 68%, rgba(3, 5, 4, .28) 100%),
+      linear-gradient(0deg, rgba(3, 5, 4, .88), transparent 58%);
+  }
   body[data-page="home"] .brand-hero-content { padding-top: 8.3rem; padding-bottom: 7.5rem; }
   body[data-page="home"] .brand-hero h1 { font-size: clamp(4rem, 20vw, 5.8rem); }
   body[data-page="home"] .hero-event-link { min-width: calc(100% - 1.3rem); }
