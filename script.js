@@ -444,7 +444,7 @@ if ("IntersectionObserver" in window && viewTrackedSections.length) {
       trackEvent(viewEvent);
       if (viewEvent === "view_event") {
         trackMetaStandardEvent("ViewContent", {
-          content_name: "Treinão LEGADO RUN",
+          content_name: "Corrida LEGADO RUN",
           content_category: "Evento esportivo",
           content_ids: ["legado-run-2026"],
           content_type: "product",
@@ -463,7 +463,7 @@ if ("IntersectionObserver" in window && viewTrackedSections.length) {
     trackEvent(viewEvent);
     if (viewEvent === "view_event") {
       trackMetaStandardEvent("ViewContent", {
-        content_name: "Treinão LEGADO RUN",
+        content_name: "Corrida LEGADO RUN",
         content_category: "Evento esportivo",
         content_ids: ["legado-run-2026"],
         content_type: "product",
