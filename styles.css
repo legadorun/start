@@ -712,20 +712,31 @@ body[data-page="home"] .brand-hero::before {
 body[data-page="home"] .brand-hero-visual {
   position: absolute;
   z-index: 2;
-  top: 13.2rem;
+  top: 10.3rem;
   right: max(1rem, calc((100vw - var(--container)) / 2));
   bottom: auto;
   width: min(48vw, 680px);
-  aspect-ratio: 1600 / 965;
+  aspect-ratio: 1.28;
   margin: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, .14);
-  background: #121612;
-  box-shadow: 0 34px 80px rgba(0, 0, 0, .42);
+  border: 1px solid rgba(200, 255, 25, .26);
+  background:
+    linear-gradient(135deg, rgba(200, 255, 25, .09), transparent 42%),
+    #090c08;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, .48);
 }
 
 body[data-page="home"] .brand-hero-visual::before {
-  display: none;
+  content: "MOVIMENTO";
+  position: absolute;
+  top: 1.2rem;
+  right: -3.8rem;
+  color: transparent;
+  font: 6.8rem/.8 "Bebas Neue", Impact, sans-serif;
+  letter-spacing: .02em;
+  -webkit-text-stroke: 1px rgba(200, 255, 25, .14);
+  transform: rotate(90deg) translateX(100%);
+  transform-origin: top right;
 }
 
 body[data-page="home"] .brand-hero-visual::after {
@@ -733,40 +744,72 @@ body[data-page="home"] .brand-hero-visual::after {
   position: absolute;
   z-index: 1;
   inset: 0;
-  background: linear-gradient(180deg, transparent 62%, rgba(3, 5, 4, .72) 100%);
+  background:
+    linear-gradient(90deg, transparent 49.7%, rgba(255, 255, 255, .08) 50%, transparent 50.3%),
+    linear-gradient(0deg, transparent 49.7%, rgba(255, 255, 255, .06) 50%, transparent 50.3%);
   pointer-events: none;
 }
 
-body[data-page="home"] .brand-hero-image {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 52%;
-  filter: saturate(.92) contrast(1.03) brightness(.94);
-  transform: none;
+body[data-page="home"] .brand-hero-wordmark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 4vw, 3.5rem);
 }
 
-body[data-page="home"] .brand-hero-visual figcaption {
+body[data-page="home"] .wordmark-location {
   position: absolute;
   z-index: 3;
-  right: 1.25rem;
-  bottom: 1.05rem;
-  left: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-top: .85rem;
-  border-top: 1px solid rgba(255, 255, 255, .2);
-  color: rgba(255, 255, 255, .7);
+  top: 1.45rem;
+  left: 1.55rem;
+  color: rgba(255, 255, 255, .64);
   font-size: .64rem;
-  letter-spacing: .1em;
+  font-weight: 800;
+  letter-spacing: .14em;
   text-transform: uppercase;
 }
 
-body[data-page="home"] .brand-hero-visual figcaption strong { color: var(--color-primary); }
+body[data-page="home"] .wordmark-location b { color: var(--color-primary); padding-inline: .45rem; }
+
+body[data-page="home"] .brand-hero-wordmark > strong,
+body[data-page="home"] .brand-hero-wordmark > em {
+  position: relative;
+  z-index: 2;
+  display: block;
+  font-family: "Bebas Neue", Impact, sans-serif;
+  font-style: normal;
+  letter-spacing: -.045em;
+  text-transform: uppercase;
+}
+
+body[data-page="home"] .brand-hero-wordmark > strong {
+  color: #f5f7f2;
+  font-size: clamp(7.4rem, 12vw, 10.8rem);
+  line-height: .7;
+}
+
+body[data-page="home"] .brand-hero-wordmark > em {
+  color: var(--color-primary);
+  font-size: clamp(11rem, 18vw, 16rem);
+  line-height: .7;
+}
+
+body[data-page="home"] .wordmark-pillars {
+  position: absolute;
+  z-index: 3;
+  right: 1.5rem;
+  bottom: 1.3rem;
+  left: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  padding-top: .85rem;
+  border-top: 1px solid rgba(255, 255, 255, .18);
+  color: rgba(255, 255, 255, .7);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
 
 body[data-page="home"] .brand-hero-shade {
   z-index: 1;
@@ -944,16 +987,12 @@ body[data-page="home"] .brand-manifesto { padding-block: clamp(4rem, 7vw, 7rem);
     inset: auto;
     order: 2;
     width: calc(100% - 2rem);
-    min-height: 0;
-    aspect-ratio: 1600 / 965;
+    min-height: 360px;
+    aspect-ratio: auto;
     margin: 0 1rem 1.3rem;
   }
-  body[data-page="home"] .brand-hero-image {
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-  }
+  body[data-page="home"] .brand-hero-wordmark > strong { font-size: clamp(5.8rem, 31vw, 8rem); }
+  body[data-page="home"] .brand-hero-wordmark > em { font-size: clamp(9rem, 48vw, 12.5rem); }
   body[data-page="home"] .brand-hero-shade {
     display: none;
   }
