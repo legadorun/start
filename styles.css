@@ -275,6 +275,20 @@ h3 { margin-bottom: .65rem; font-size: clamp(1.6rem, 2.7vw, 2.3rem); line-height
 .kit-tabs button { padding: .65rem .8rem; border: 1px solid #343934; background: transparent; color: #fff; font-size: .68rem; font-weight: 900; text-transform: uppercase; cursor: pointer; }
 .kit-tabs button.is-active { border-color: var(--color-primary); background: var(--color-primary); color: #080a08; }
 .kit-detail { min-height: 3rem; color: var(--color-muted); }
+.kit-contents {
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  border: 1px solid rgba(200, 255, 25, .35);
+  background:
+    linear-gradient(145deg, rgba(200, 255, 25, .1), transparent 48%),
+    #070a08;
+}
+.kit-contents-label { margin: 0 0 1.5rem; color: var(--color-primary); font-size: .68rem; font-weight: 900; letter-spacing: .14em; text-transform: uppercase; }
+.kit-contents strong { padding: .55rem 0; border-bottom: 1px solid #30352f; color: #fff; font: clamp(2.8rem, 5vw, 5rem)/.9 "Bebas Neue", Impact, sans-serif; text-transform: uppercase; }
+.kit-contents small { margin-top: 1.5rem; color: var(--color-muted); line-height: 1.5; }
 .price-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 1.5rem 0; background: #363b35; }
 .price-row > div { padding: 1rem; background: #121612; }
 .price-row span, .price-row small { display: block; color: var(--color-muted); font-size: .68rem; font-weight: 800; text-transform: uppercase; }
@@ -636,6 +650,19 @@ body:not([data-page="home"]) .site-header {
 }
 
 .event-editorial-copy > * { position: relative; z-index: 1; }
+
+.medal-statement {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  border: 1px solid rgba(200, 255, 25, .35);
+  background: linear-gradient(145deg, rgba(200, 255, 25, .13), transparent 55%), #090c09;
+}
+.medal-statement span { color: var(--color-primary); font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.medal-statement strong { margin: .6rem 0 1.2rem; color: #fff; font: clamp(5rem, 10vw, 10rem)/.8 "Bebas Neue", Impact, sans-serif; }
+.medal-statement p { max-width: 520px; margin: 0; color: var(--color-muted); }
 
 .trust-track span::before {
   content: "✓";
