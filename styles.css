@@ -983,11 +983,96 @@ body[data-page="home"] .hero-event-link > span {
 body[data-page="home"] .brand-manifesto-grid { min-height: 520px; }
 body[data-page="home"] .brand-manifesto { padding-block: clamp(4rem, 7vw, 7rem); }
 
+.race-campaign {
+  overflow: hidden;
+  border-block: 1px solid rgba(200, 255, 25, .28);
+  background: #070907;
+}
+
+.race-campaign-ticker {
+  display: flex;
+  width: max-content;
+  padding: .85rem 0;
+  background: var(--color-primary);
+  color: #070907;
+  font-size: .7rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  white-space: nowrap;
+}
+
+.race-campaign-ticker span { padding-right: 2.5rem; }
+
+.race-campaign-grid {
+  display: grid;
+  grid-template-columns: minmax(380px, .82fr) 1.18fr;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.race-campaign-art {
+  margin: 0;
+  padding: clamp(1rem, 2.6vw, 2.5rem);
+  background: linear-gradient(145deg, #10150d, #050605);
+}
+
+.race-campaign-art img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(200, 255, 25, .22);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .5);
+}
+
+.race-campaign-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(3rem, 7vw, 7rem);
+  background:
+    linear-gradient(135deg, rgba(200, 255, 25, .08), transparent 45%),
+    #0b0e0b;
+}
+
+.race-campaign-copy::after {
+  content: "RUN";
+  position: absolute;
+  right: -1rem;
+  bottom: -2rem;
+  color: rgba(255, 255, 255, .025);
+  font: clamp(10rem, 24vw, 24rem)/.7 "Bebas Neue", Impact, sans-serif;
+  pointer-events: none;
+}
+
+.race-campaign-copy > * { position: relative; z-index: 1; }
+.race-campaign-copy h2 { max-width: 720px; margin-bottom: 1.35rem; font-size: clamp(4rem, 7.5vw, 7.7rem); line-height: .82; }
+.race-campaign-copy h2 em { color: var(--color-primary); font-style: normal; }
+.race-campaign-copy > p:not(.section-kicker):not(.race-campaign-note) { max-width: 650px; color: #c5cac1; font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.65; }
+
+.race-campaign-facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 2rem 0;
+  border-block: 1px solid #333832;
+}
+
+.race-campaign-facts div { padding: 1rem 1rem 1rem 0; border-right: 1px solid #333832; }
+.race-campaign-facts div:not(:first-child) { padding-left: 1rem; }
+.race-campaign-facts div:last-child { border-right: 0; }
+.race-campaign-facts dt { color: #81877e; font-size: .58rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.race-campaign-facts dd { margin: .35rem 0 0; color: #fff; font: 1.35rem/1 "Bebas Neue", Impact, sans-serif; letter-spacing: .03em; }
+.race-campaign-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 1.35rem; }
+.race-campaign-actions .text-link { color: #fff; }
+.race-campaign-note { margin: 2.2rem 0 0; color: var(--color-primary); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+
 @media (max-width: 1000px) {
   body[data-page="home"] .brand-hero-visual { width: 47vw; }
   body[data-page="home"] .brand-hero-content { width: 46vw; max-width: 46vw; }
   .hub-grid { grid-template-columns: 1fr 1fr; }
   .hub-grid a { min-height: 250px; }
+  .race-campaign-grid { grid-template-columns: .9fr 1.1fr; }
+  .race-campaign-copy { padding: 3rem; }
 }
 
 @media (max-width: 640px) {
@@ -1037,4 +1122,14 @@ body[data-page="home"] .brand-manifesto { padding-block: clamp(4rem, 7vw, 7rem);
   .hub-heading { grid-template-columns: 1fr; }
   .hub-grid { grid-template-columns: 1fr; }
   .hub-grid a { min-height: 210px; }
+  .race-campaign-grid { grid-template-columns: 1fr; }
+  .race-campaign-art { padding: 1rem; }
+  .race-campaign-copy { padding: 3.5rem 1rem 4rem; }
+  .race-campaign-copy h2 { font-size: clamp(3.7rem, 17vw, 5.2rem); }
+  .race-campaign-facts { grid-template-columns: 1fr; }
+  .race-campaign-facts div,
+  .race-campaign-facts div:not(:first-child) { padding: .9rem 0; border-right: 0; border-bottom: 1px solid #333832; }
+  .race-campaign-facts div:last-child { border-bottom: 0; }
+  .race-campaign-actions { align-items: stretch; flex-direction: column; }
+  .race-campaign-actions .button { width: 100%; }
 }
