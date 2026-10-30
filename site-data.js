@@ -26,7 +26,7 @@ window.LEGADO_SITE_DATA = {
       ["08h15", "Largada 6 km"],
       ["08h55", "Largada 3 km"],
       ["10h00", "Show Gospel"],
-      ["11h00", "Premiacao e comunicados"],
+      ["11h00", "Comunicados do evento"],
       ["12h00", "Encerramento"],
     ],
   },
