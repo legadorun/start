@@ -20,7 +20,7 @@
         ${nav.map(([id, href, label]) => `<a href="${href}"${page === id ? ' aria-current="page"' : ""}>${label}</a>`).join("")}
         <a class="mobile-app-link" href="https://legado-run.vercel.app/" target="_blank" rel="noopener noreferrer" data-track="click_app">Acessar o app</a>
       </nav>
-      <a class="header-cta" href="/eventos/legado-run-2026/"><strong>Próximo evento</strong><span>01 NOV</span></a>`;
+      <a class="header-cta" href="https://site.ticketsports.com.br/Inscricao/Categoria.aspx?__idEvento=87806&lang=pt-BR" target="_blank" rel="noopener noreferrer" data-track="click_registration begin_checkout" data-utm-content="header"><strong>Inscreva-se</strong><span>Corrida • 01 NOV</span></a>`;
   }
 
   const footer = document.querySelector("[data-site-footer]");
